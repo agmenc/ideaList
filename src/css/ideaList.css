@@ -1,0 +1,47 @@
+
+ul.tree, ul.tree ul {
+    list-style-type: none;
+    list-style-position: inside;
+    margin: 2px;
+    padding: 0;
+}
+
+li {
+    margin-left: 20px;
+    padding: 2px;
+}
+
+li.expanded {
+    list-style-image: url("../images/less.png")
+}
+
+li.contracted {
+    list-style-image: url("../images/more.png")
+}
+
+span.selected {
+    background-color: #f7f179;
+    border: thin solid black;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+span.unselected {
+    background-color: white;
+    border: none;
+    padding: 2px;
+}
+
+span.hover {
+    background-color: #f5f5dc;
+}
+
+.options {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+}

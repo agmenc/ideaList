@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Click the save button to begin having ideas</title>
+    <script type="text/javascript" src="../javascript/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="../javascript/tiddlyWikiSave.js"></script>
+    <script type="text/javascript" src="../javascript/ideaList.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/ideaList.css"/>
+</head>
+<body>
+<div class="hidden">
+    <div id="options" class="options"><a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a></div>
+    <div id="newChild">
+        <ul>
+            <li><span>Monkeys</span></li>
+        </ul>
+    </div>
+</div>
+<ul class="tree">
+    <li><span>Make tree editable</span>
+        <ul>
+            <li><span>Show currently selected node</span></li>
+            <li><span>Add/delete symbols when selected</span></li>
+            <li><span>Expand/contract</span>
+                <ul>
+                    <li><span>Show contract symbols</span></li>
+                    <li><span>Contract when clicked</span></li>
+                    <li><span>Show expand symbol when contracted</span></li>
+                    <li><span>Expand when clicked again</span></li>
+                </ul>
+            </li>
+            <li><span>Insert child node</span>
+                <ul>
+                    <li><span>Add the node</span></li>
+                    <li><span>Make nodes editable when selected</span></li>
+                </ul>
+            </li>
+            <li><span>Make page locally saveable</span>
+                <ul>
+                    <li><span>Save anything</span></li>
+                    <li><span>Save JSON representing the data</span></li>
+                    <li><span>Rebuild the tree from JSON</span></li>
+                </ul>
+            </li>
+            <li><span>Show the hover</span></li>
+            <li><span>Actually do the expand/contract. Use jQuery toggle()?</span></li>
+            <li><span>Allow arrow keys to change selected node</span>
+                <ul>
+                    <li><span>Up/down to navigate as-is</span></li>
+                    <li><span>Left/right to expand/collapse nodes</span></li>
+                </ul>
+            </li>
+            <li><span>Make state of tree saveable</span></li>
+            <li><span>Delete child node and all children</span></li>
+            <li><span>Show target nodes on hover. Use jQuery hover()</span></li>
+            <li><span>Move child nodes up (to parent of current parent)</span></li>
+            <li><span>Move child nodes ?</span></li>
+        </ul>
+    </li>
+    <li><span>Make it look like a tree</span>
+        <ul>
+            <li><span>Make leaf node symbol different (just empty?)</span></li>
+        </ul>
+    </li>
+    <li><span>Make it online</span></li>
+    <li><span>Bugs</span>
+        <ul>
+            <li><span>Clicking the text in a node should not toggle expand/contract</span></li>
+            <li><span>tiddlyWikiSave.js pops up a message in Chrome, asking if you want to run Java</span></li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>
