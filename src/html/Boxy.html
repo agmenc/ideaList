@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Boxy</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        div.box {
+            border: thin solid black;
+            border-radius: 5px;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+        }
+
+        div.line {
+            border: thin solid black;
+        }
+
+        div.horizontal {
+            height: 0;
+            width: 100px;
+        }
+
+        div.vertical {
+            height: 50px;
+            width: 0;
+            margin-left: 50%;
+        }
+    </style>
+</head>
+<body>
+<table style="margin-top: 50px; margin-left: 50px">
+    <tr>
+        <td><div class="box">Some System</div></td>
+        <td><div class="line horizontal"></div></td>
+        <td><div class="box">Your System</div></td>
+        <td><div class="line horizontal"></div></td>
+        <td><div class="box">Some Other System</div></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><div class="line vertical"></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><div class="box">Persistence Thingy</div></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+</body>
+</html>

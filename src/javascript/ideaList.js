@@ -1,16 +1,19 @@
 jQuery(document).ready(function () {
-    $(".tree").each(function () {new Tree($(this), new Storage())})
+    $(".tree").each(function () {new IdeaList($(this), new Storage())})
 });
 
 function asPlain($jquerifiedElement) {
     return $jquerifiedElement[0];
 }
 
-function Tree($root, storage) {
+function IdeaList($root, storage) {
     var $selectedNode;
     var originalText = "";
     var $options = $("#options");
     var $newChildTemplate = $("#newChild").find("li");
+
+    $root.append('<ul class="tree" title="Some Title"><li><span>Start Typing</span></li></ul>');
+//    $root.append('<div id="options" class="options"><a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a></div>');
 
     $root.find("li").each(function () { treeify($(this)); });
 
@@ -58,11 +61,11 @@ function Tree($root, storage) {
 }
 
 function Storage() {
-    this.save = function(key, value) {
+    this.save = function (key, value) {
         tryIf(storable(), function () {localStorage.setItem(key, value)});
     };
 
-    this.retrieve = function(key) {
+    this.retrieve = function (key) {
         return tryIf(storable(), function () {return localStorage.getItem(key)});
     };
 
