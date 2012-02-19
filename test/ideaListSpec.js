@@ -6,17 +6,20 @@ function StorageStub() {
 }
 
 var storage;
+var ideaList;
+var emptyDiv;
 
 beforeEach(function () {
-    $("body").append('<div id="emptyDiv" class="ideaList"></div>');
     storage = new StorageStub();
-    new IdeaList($("#emptyDiv"), storage);
+    $("body").append('<div id="emptyDiv" class="ideaList"></div>');
+    ideaList = new IdeaList($("#emptyDiv"), storage);
+    emptyDiv = $("#emptyDiv");
 });
 
 describe('IdeaList', function () {
     it('Given an empty div, turns it into an empty ideaList', function () {
-        expect($("#emptyDiv").html()).toEqual(
-                '<ul class="ldeaList"><li class="expanded"><span>Start Typing</span></li></ul>'
+        expect(emptyDiv.html()).toEqual(
+                '<ul><li class="expanded"><span>Start Typing</span></li></ul>'
         );
     });
     it('Saves the state of the ideaList as a JSON object', function () {
@@ -24,15 +27,15 @@ describe('IdeaList', function () {
 
         ideaList.saveLocally();
 
-        expect(storage.save).toHaveBeenCalledWith({'bob': 'Sue'});
+        expect(storage.save).toHaveBeenCalledWith("ideaList", new Idea("Start Typing"));
     });
     it('Can consume the appropriate JSON object to form a tree.', function () {
         spyOn(storage, 'retrieve').andReturn({'monkeys': 'eat poo'});
 
         ideaList.loadLocally();
 
-        expect($("#emptyDiv").html()).toEqual(
-                '<ul class="ideaList"><li class="expanded"><span>Monkeys eat poo</span></li></ul>'
+        expect(emptyDiv.html()).toEqual(
+                '<ul><li class="expanded"><span>Monkeys eat poo</span></li></ul>'
         );
     });
     it('Looks for saved JSON data to populate the tree', function () {
@@ -55,7 +58,7 @@ describe('IdeaList', function () {
         );
     });
 
-    it('saves a tree as a JSON structure', function () {
+    it('Can handle many ideaLists in the same browser for the same user', function () {
         expect(true).toEqual(false);
     });
 });

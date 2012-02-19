@@ -6,13 +6,36 @@ function asPlain($jquerifiedElement) {
     return $jquerifiedElement[0];
 }
 
-function IdeaList($root, storage) {
+function Idea(description, children) {
+    this.description = description;
+    this.kids = children ? children : [];
+
+    this.hasChildren = function() { return typeof this.kids == "Array" && this.kids.length > 0; }
+}
+
+function IdeaList($root, storage, sourceData) {
+    var data = sourceData ? sourceData : new Idea("Start Typing");
+    var insertionPoint = "~%~";
+    var itemTemplate = '<li><span>d</span>' + insertionPoint + '</li>';
+
+    $root.append(traverseAndBuild([data], '<ul>' + insertionPoint + '</ul>'));
+
+    this.saveLocally = function() { storage.save("ideaList", this.data); };
+
+    function traverseAndBuild(nodes, accumulator) {
+        $.each(nodes, function(index, node) {
+            accumulator = accumulator.replace(insertionPoint, itemTemplate.replace("d", node.description));
+            if(node.hasChildren()) { traverseAndBuild(node.kids, accumulator.replace(insertionPoint, '<ul>' + insertionPoint + '</ul>')); }
+        });
+        accumulator = accumulator.replace(insertionPoint, "");
+        return accumulator;
+    }
+
     var $selectedNode;
     var originalText = "";
     var $options = $("#options");
     var $newChildTemplate = $("#newChild").find("li");
 
-    $root.append('<ul class="tree" title="Some Title"><li><span>Start Typing</span></li></ul>');
 //    $root.append('<div id="options" class="options"><a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a></div>');
 
     $root.find("li").each(function () { treeify($(this)); });
