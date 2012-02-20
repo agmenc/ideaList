@@ -1,5 +1,5 @@
 jQuery(document).ready(function () {
-    $(".tree").each(function () {new IdeaList($(this), new Storage())})
+    $("div.ideaList").each(function () {new IdeaList($(this), new Storage())})
 });
 
 function asPlain($jquerifiedElement) {
@@ -11,30 +11,30 @@ function Idea(description, children) {
     this.kids = children ? children : [];
 }
 
-function IdeaList($root, storage, sourceData) {
-    var data = sourceData ? sourceData : new Idea("Start Typing");
-    console.log("data = " + data.description);
+function IdeaList($root, storage) {
+    var data;
     var insertionPoint = "~%~";
     var itemTemplate = '<li><span>d</span>' + insertionPoint + '</li>';
 
     this.saveLocally = function() { storage.save("ideaList", data); };
-    this.loadLocally = function() { return storage.retrieve("ideaList"); };
+    this.startingData = function() {
+        var dataName = $root.attr("id");
+        var locallySaved = storage.retrieve(dataName);
+        return locallySaved ? locallySaved : new Idea("Start Typing");
+    };
 
     function hasChildren(node) { return typeof node.kids == "Array" && node.kids.length > 0; }
 
     function traverseAndBuild(nodes, accumulator) {
-        console.log("starting with = " + accumulator);
         $.each(nodes, function(index, node) {
-            console.log("accumulator = " + accumulator);
             accumulator = accumulator.replace(insertionPoint, itemTemplate.replace("d", node.description));
             if(hasChildren(node)) { traverseAndBuild(node.kids, accumulator.replace(insertionPoint, '<ul>' + insertionPoint + '</ul>')); }
         });
-        console.log("accumulated = " + accumulator);
         return accumulator.replace(insertionPoint, "");
     }
 
+    data = this.startingData();
     $root.append(traverseAndBuild([data], '<ul>' + insertionPoint + '</ul>'));
-    console.log("$root.html() = " + $root.html());
 
 
 

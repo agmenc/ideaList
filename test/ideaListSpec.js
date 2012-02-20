@@ -31,14 +31,20 @@ describe('IdeaList', function () {
 
         expect(storage.save).toHaveBeenCalledWith("ideaList", new Idea("Start Typing"));
     });
-    it('Can consume the appropriate JSON object to form a tree.', function () {
+    it('Uses the div id as key to find saved JSON data to populate the tree', function () {
+        spyOn(storage, 'retrieve');
+
+        ideaList = new IdeaList($("#emptyDiv"), storage);
+
+        expect(storage.retrieve).toHaveBeenCalledWith("emptyDiv");
+    });
+    it('Can consume the appropriate JSON object to form a tree', function () {
+        spyOn(storage, 'retrieve').andReturn(new Idea("monkeys"));
         emptyDiv.html("");
-        ideaList = new IdeaList($("#emptyDiv"), storage, new Idea("monkeys"));
+
+        ideaList = new IdeaList($("#emptyDiv"), storage);
 
         expect(emptyDiv.html()).toEqual( '<ul><li><span>monkeys</span></li></ul>' );
-    });
-    it('Looks for saved JSON data to populate the tree', function () {
-        expect(true).toEqual(false);
     });
     it('Fails noisily if you try to bind an ideaList to a root that already contains one', function () {
         expect(true).toEqual(false);
