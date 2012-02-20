@@ -9,27 +9,37 @@ function asPlain($jquerifiedElement) {
 function Idea(description, children) {
     this.description = description;
     this.kids = children ? children : [];
-
-    this.hasChildren = function() { return typeof this.kids == "Array" && this.kids.length > 0; }
 }
 
 function IdeaList($root, storage, sourceData) {
     var data = sourceData ? sourceData : new Idea("Start Typing");
+    console.log("data = " + data.description);
     var insertionPoint = "~%~";
     var itemTemplate = '<li><span>d</span>' + insertionPoint + '</li>';
 
-    $root.append(traverseAndBuild([data], '<ul>' + insertionPoint + '</ul>'));
+    this.saveLocally = function() { storage.save("ideaList", data); };
+    this.loadLocally = function() { return storage.retrieve("ideaList"); };
 
-    this.saveLocally = function() { storage.save("ideaList", this.data); };
+    function hasChildren(node) { return typeof node.kids == "Array" && node.kids.length > 0; }
 
     function traverseAndBuild(nodes, accumulator) {
+        console.log("starting with = " + accumulator);
         $.each(nodes, function(index, node) {
+            console.log("accumulator = " + accumulator);
             accumulator = accumulator.replace(insertionPoint, itemTemplate.replace("d", node.description));
-            if(node.hasChildren()) { traverseAndBuild(node.kids, accumulator.replace(insertionPoint, '<ul>' + insertionPoint + '</ul>')); }
+            if(hasChildren(node)) { traverseAndBuild(node.kids, accumulator.replace(insertionPoint, '<ul>' + insertionPoint + '</ul>')); }
         });
-        accumulator = accumulator.replace(insertionPoint, "");
-        return accumulator;
+        console.log("accumulated = " + accumulator);
+        return accumulator.replace(insertionPoint, "");
     }
+
+    $root.append(traverseAndBuild([data], '<ul>' + insertionPoint + '</ul>'));
+    console.log("$root.html() = " + $root.html());
+
+
+
+
+
 
     var $selectedNode;
     var originalText = "";
@@ -38,7 +48,7 @@ function IdeaList($root, storage, sourceData) {
 
 //    $root.append('<div id="options" class="options"><a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a></div>');
 
-    $root.find("li").each(function () { treeify($(this)); });
+//    $root.find("li").each(function () { treeify($(this)); });
 
     $options.find("#addChild").click(function (event) {
         var $newChild = $newChildTemplate.clone();

@@ -12,15 +12,17 @@ var emptyDiv;
 beforeEach(function () {
     storage = new StorageStub();
     $("body").append('<div id="emptyDiv" class="ideaList"></div>');
-    ideaList = new IdeaList($("#emptyDiv"), storage);
     emptyDiv = $("#emptyDiv");
 });
 
 describe('IdeaList', function () {
+    beforeEach(function () {
+        emptyDiv.html("");
+        ideaList = new IdeaList($("#emptyDiv"), storage);
+    });
+
     it('Given an empty div, turns it into an empty ideaList', function () {
-        expect(emptyDiv.html()).toEqual(
-                '<ul><li class="expanded"><span>Start Typing</span></li></ul>'
-        );
+        expect(emptyDiv.html()).toEqual( '<ul><li><span>Start Typing</span></li></ul>' );
     });
     it('Saves the state of the ideaList as a JSON object', function () {
         spyOn(storage, 'save');
@@ -30,15 +32,15 @@ describe('IdeaList', function () {
         expect(storage.save).toHaveBeenCalledWith("ideaList", new Idea("Start Typing"));
     });
     it('Can consume the appropriate JSON object to form a tree.', function () {
-        spyOn(storage, 'retrieve').andReturn({'monkeys': 'eat poo'});
+        emptyDiv.html("");
+        ideaList = new IdeaList($("#emptyDiv"), storage, new Idea("monkeys"));
 
-        ideaList.loadLocally();
-
-        expect(emptyDiv.html()).toEqual(
-                '<ul><li class="expanded"><span>Monkeys eat poo</span></li></ul>'
-        );
+        expect(emptyDiv.html()).toEqual( '<ul><li><span>monkeys</span></li></ul>' );
     });
     it('Looks for saved JSON data to populate the tree', function () {
+        expect(true).toEqual(false);
+    });
+    it('Fails noisily if you try to bind an ideaList to a root that already contains one', function () {
         expect(true).toEqual(false);
     });
 
