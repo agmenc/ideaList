@@ -29,7 +29,7 @@ describe('IdeaList', function () {
 
         ideaList.saveLocally();
 
-        expect(storage.save).toHaveBeenCalledWith("ideaList", new Idea("Start Typing"));
+        expect(storage.save).toHaveBeenCalledWith("emptyDiv", new Idea("Start Typing"));
     });
     it('Uses the div id as key to find saved JSON data to populate the tree', function () {
         spyOn(storage, 'retrieve');

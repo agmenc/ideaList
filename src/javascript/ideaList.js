@@ -12,13 +12,13 @@ function Idea(description, children) {
 }
 
 function IdeaList($root, storage) {
+    var dataName = $root.attr("id");
     var data;
     var insertionPoint = "~%~";
     var itemTemplate = '<li><span>d</span>' + insertionPoint + '</li>';
 
-    this.saveLocally = function() { storage.save("ideaList", data); };
+    this.saveLocally = function() { storage.save(dataName, data); };
     this.startingData = function() {
-        var dataName = $root.attr("id");
         var locallySaved = storage.retrieve(dataName);
         return locallySaved ? locallySaved : new Idea("Start Typing");
     };
