@@ -32,6 +32,7 @@ describe('IdeaList', function () {
         expect(storage.save).toHaveBeenCalledWith("emptyDiv", new Idea("Start Typing"));
     });
     it('Uses the div id as key to find saved JSON data to populate the tree', function () {
+        emptyDiv.html("");
         spyOn(storage, 'retrieve');
 
         ideaList = new IdeaList($("#emptyDiv"), storage);
@@ -47,7 +48,13 @@ describe('IdeaList', function () {
         expect(emptyDiv.html()).toEqual( '<ul><li><span>monkeys</span></li></ul>' );
     });
     it('Fails noisily if you try to bind an ideaList to a root that already contains one', function () {
-        expect(true).toEqual(false);
+        $("body").append('<div id="divWithChildren" class="ideaList"><span>You are a monkey</span></div>');
+
+        try {
+            ideaList = new IdeaList($("#divWithChildren"), storage);
+        } catch (e) {
+            expect(e).toEqual("Cannot bind an ideaList to a DOM object with children. Use an empty div instead.");
+        }
     });
 
     it('Adds the root node to any div with class of ideaList', function () {

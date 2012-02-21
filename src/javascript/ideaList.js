@@ -12,16 +12,22 @@ function Idea(description, children) {
 }
 
 function IdeaList($root, storage) {
+    checkPreconditions($root, storage);
     var dataName = $root.attr("id");
-    var data;
+    var data = startingData(dataName);
     var insertionPoint = "~%~";
     var itemTemplate = '<li><span>d</span>' + insertionPoint + '</li>';
 
     this.saveLocally = function() { storage.save(dataName, data); };
-    this.startingData = function() {
-        var locallySaved = storage.retrieve(dataName);
+
+    function checkPreconditions($rootElement, storageProvider) {
+        if (asPlain($rootElement).hasChildNodes()) throw "Cannot bind an ideaList to a DOM object with children. Use an empty div instead.";
+    }
+
+    function startingData(storageName) {
+        var locallySaved = storage.retrieve(storageName);
         return locallySaved ? locallySaved : new Idea("Start Typing");
-    };
+    }
 
     function hasChildren(node) { return typeof node.kids == "Array" && node.kids.length > 0; }
 
@@ -33,7 +39,6 @@ function IdeaList($root, storage) {
         return accumulator.replace(insertionPoint, "");
     }
 
-    data = this.startingData();
     $root.append(traverseAndBuild([data], '<ul>' + insertionPoint + '</ul>'));
 
 
