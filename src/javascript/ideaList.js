@@ -40,6 +40,7 @@ function IdeaList($root, storage) {
     }
 
     $root.append(traverseAndBuild([data], '<ul>' + insertionPoint + '</ul>'));
+    $("body").append('<div class="hidden"><div id="options" class="options"><a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a></div></div>');
 
 
 
@@ -51,9 +52,7 @@ function IdeaList($root, storage) {
     var $options = $("#options");
     var $newChildTemplate = $("#newChild").find("li");
 
-//    $root.append('<div id="options" class="options"><a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a></div>');
-
-//    $root.find("li").each(function () { treeify($(this)); });
+    $root.find("li").each(function () { treeify($(this)); });
 
     $options.find("#addChild").click(function (event) {
         var $newChild = $newChildTemplate.clone();
@@ -79,7 +78,6 @@ function IdeaList($root, storage) {
             saveIfChanged($selectedNode, originalText);
         }
 
-        var monkeys = storage.retrieve("monkeys");
         originalText = $target.text();
         $target.addClass("selected");
         $target.after($options);

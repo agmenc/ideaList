@@ -22,7 +22,7 @@ describe('IdeaList', function () {
     });
 
     it('Given an empty div, turns it into an empty ideaList', function () {
-        expect(emptyDiv.html()).toEqual( '<ul><li><span>Start Typing</span></li></ul>' );
+        expect(emptyDiv.html()).toEqual( '<ul><li class="expanded"><span>Start Typing</span></li></ul>' );
     });
     it('Saves the state of the ideaList as a JSON object', function () {
         spyOn(storage, 'save');
@@ -45,7 +45,7 @@ describe('IdeaList', function () {
 
         ideaList = new IdeaList($("#emptyDiv"), storage);
 
-        expect(emptyDiv.html()).toEqual( '<ul><li><span>monkeys</span></li></ul>' );
+        expect(emptyDiv.html()).toEqual( '<ul><li class="expanded"><span>monkeys</span></li></ul>' );
     });
     it('Fails noisily if you try to bind an ideaList to a root that already contains one', function () {
         $("body").append('<div id="divWithChildren" class="ideaList"><span>You are a monkey</span></div>');
@@ -56,6 +56,33 @@ describe('IdeaList', function () {
             expect(e).toEqual("Cannot bind an ideaList to a DOM object with children. Use an empty div instead.");
         }
     });
+    it('Allows the user to select a node', function () {
+        var firstItem = emptyDiv.find("li").first();
+
+        firstItem.click();
+
+        expect(firstItem.find("span").hasClass("selected")).toEqual(true);
+    });
+    it('Displays options to add or delete child nodes', function () {
+        var firstItem = emptyDiv.find("li").first();
+
+        firstItem.click();
+
+        expect(emptyDiv.html()).toContain('<div id="options" class="options"><a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a></div>');
+    });
+    it('Adds child nodes when you click the add button', function () {
+        var firstItem = emptyDiv.find("li").first();
+
+        firstItem.click();
+
+        var addButton = firstItem.find("input").first();
+        addButton.click();
+
+        expect(firstItem.html()).toContain('<ul><li class="expanded"><span>Start Typing</span></li></ul>');
+    });
+
+
+
 
     it('Adds the root node to any div with class of ideaList', function () {
         $("body").append('<div id="test1a" class="ideaList"></div>');
