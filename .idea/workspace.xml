@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7d62d33a-6d97-4201-aaf3-846514881d45" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="7d62d33a-6d97-4201-aaf3-846514881d45" name="Default" comment="Split the tests and the classes into meaningful pieces">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/javascript/Storage.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/javascript/ideaListLoader.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/IdeaListSpec.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/ListBuilderSpec.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/ListSaverSpec.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/StorageSpec.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/ideaListSpec.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/javascript/ideaList.js" afterPath="$PROJECT_DIR$/src/javascript/IdeaList.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/javascript/ideaList.js" afterPath="$PROJECT_DIR$/src/javascript/ideaList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/ideaListSpec.js" afterPath="$PROJECT_DIR$/test/ideaListSpec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/html/IdeaList-backup.html" afterPath="$PROJECT_DIR$/src/html/IdeaList-backup.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/html/IdeaList.html" afterPath="$PROJECT_DIR$/src/html/IdeaList.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/SpecRunner.html" afterPath="$PROJECT_DIR$/test/SpecRunner.html" />
     </list>
     <ignored path="ideaList.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -63,19 +71,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ideaList.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/javascript/ideaList.js">
+      <file leaf-file-name="IdeaList.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/javascript/IdeaList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="15" selection-start="2346" selection-end="2346" vertical-scroll-proportion="0.0">
+            <state line="5" column="33" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ideaListSpec.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/ideaListSpec.js">
+      <file leaf-file-name="ListBuilder.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/javascript/ListBuilder.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="104" selection-start="2871" selection-end="2871" vertical-scroll-proportion="0.79787236">
+            <state line="39" column="19" selection-start="1351" selection-end="1725" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IdeaList.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/html/IdeaList.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="64" selection-start="483" selection-end="483" vertical-scroll-proportion="-4.375">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IdeaListSpec.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/IdeaListSpec.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="0" selection-start="852" selection-end="852" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListSaver.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/javascript/ListSaver.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SpecRunner.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/SpecRunner.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="54" selection-start="789" selection-end="789" vertical-scroll-proportion="-8.75">
               <folding />
             </state>
           </provider>
@@ -100,11 +144,20 @@
         <option value="$PROJECT_DIR$/src/html/SaveACopy.html" />
         <option value="$PROJECT_DIR$/src/css/ideaList.css" />
         <option value="$PROJECT_DIR$/test/ideaList.js" />
-        <option value="$PROJECT_DIR$/test/SpecRunner.html" />
         <option value="$PROJECT_DIR$/src/html/Boxy.html" />
-        <option value="$PROJECT_DIR$/src/html/IdeaList.html" />
-        <option value="$PROJECT_DIR$/src/javascript/ideaList.js" />
         <option value="$PROJECT_DIR$/test/ideaListSpec.js" />
+        <option value="$PROJECT_DIR$/src/javascript/listBuilder.js" />
+        <option value="$PROJECT_DIR$/src/javascript/ideaList.js" />
+        <option value="$PROJECT_DIR$/src/javascript/Storage.js" />
+        <option value="$PROJECT_DIR$/test/ListSaverSpec.js" />
+        <option value="$PROJECT_DIR$/test/StorageSpec.js" />
+        <option value="$PROJECT_DIR$/test/SpecRunner.html" />
+        <option value="$PROJECT_DIR$/src/javascript/ideaListLoader.js" />
+        <option value="$PROJECT_DIR$/src/html/IdeaList.html" />
+        <option value="$PROJECT_DIR$/src/javascript/ListBuilder.js" />
+        <option value="$PROJECT_DIR$/test/ListBuilderSpec.js" />
+        <option value="$PROJECT_DIR$/src/javascript/IdeaList.js" />
+        <option value="$PROJECT_DIR$/test/IdeaListSpec.js" />
       </list>
     </option>
   </component>
@@ -144,6 +197,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -250,25 +304,24 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Project" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="134" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="133" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="141" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="142" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="MemberChooser.sorted" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="138" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="139" />
+    <property name="MemberChooser.sorted" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="146" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="938" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="940" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="144" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="141" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="145" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="930" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="928" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="143" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="140" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
@@ -283,13 +336,15 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
-    <property name="DefaultHtmlFileTemplate" value="Html" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="DefaultHtmlFileTemplate" value="Html" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test" />
+      <recent name="$PROJECT_DIR$/src/javascript" />
       <recent name="$PROJECT_DIR$/src/html" />
     </key>
   </component>
@@ -347,17 +402,6 @@
         <option name="SBT.BeforeRunTask" enabled="false" runInCurrentModule="false" />
       </method>
     </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
-      <JSDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSDebuggerConfigurationSettings>
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" runner="idea" />
       <module name="" />
@@ -383,6 +427,17 @@
         <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
         <option name="SBT.BeforeRunTask" enabled="false" runInCurrentModule="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
+      <JSDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSDebuggerConfigurationSettings>
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
     <list size="0" />
@@ -425,20 +480,20 @@
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.57894737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991013" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32991013" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2033046" sideWeight="0.6713555" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2033046" sideWeight="0.67008984" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286445" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -479,7 +534,7 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Constructs the single tree case correctly" />
+    <option name="LAST_COMMIT_MESSAGE" value="Split the tests and the classes into meaningful pieces" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -498,6 +553,8 @@
     <MESSAGE value="Now uses the ID to load data" />
     <MESSAGE value="Now uses the ID to save data" />
     <MESSAGE value="Constructs the single tree case correctly" />
+    <MESSAGE value="Building test for the add child button" />
+    <MESSAGE value="Split the tests and the classes into meaningful pieces" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -523,11 +580,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/html/IdeaList-backup.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="62" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/javascript/jquery-1.7.1.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5759" column="4" selection-start="152274" selection-end="152274" vertical-scroll-proportion="0.0" />
@@ -538,19 +590,9 @@
         <state line="21" column="26" selection-start="454" selection-end="454" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/SpecRunner.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="6" selection-start="124" selection-end="124" vertical-scroll-proportion="-0.625" />
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavascriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DOMCore.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="422" column="5" selection-start="7144" selection-end="7144" vertical-scroll-proportion="0.33333334" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/html/IdeaList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="4" selection-start="679" selection-end="679" vertical-scroll-proportion="0.16460906" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/css/ideaList.css">
@@ -558,14 +600,86 @@
         <state line="9" column="22" selection-start="145" selection-end="146" vertical-scroll-proportion="0.17928287" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/javascript/ideaList.js">
+    <entry file="file://$PROJECT_DIR$/test/StorageSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="15" selection-start="2346" selection-end="2346" vertical-scroll-proportion="0.0" />
+        <state line="3" column="31" selection-start="69" selection-end="69" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/ideaListSpec.js">
+    <entry file="file://$PROJECT_DIR$/test/SpecRunner.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="104" selection-start="2871" selection-end="2871" vertical-scroll-proportion="0.79787236">
+        <state line="16" column="54" selection-start="789" selection-end="789" vertical-scroll-proportion="-8.75">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ListBuilderSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="41" selection-start="1252" selection-end="1252" vertical-scroll-proportion="0.65753424">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/IdeaList-backup.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="42" selection-start="135" selection-end="135" vertical-scroll-proportion="0.04249292">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ListSaverSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="425" selection-end="425" vertical-scroll-proportion="0.27925533">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/IdeaList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="64" selection-start="483" selection-end="483" vertical-scroll-proportion="-4.375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javascript/Storage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="45" selection-start="764" selection-end="764" vertical-scroll-proportion="0.5784575">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javascript/ideaListLoader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="249" selection-end="249" vertical-scroll-proportion="0.2393617">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javascript/IdeaList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="33" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javascript/ListBuilder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="19" selection-start="1351" selection-end="1725" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/IdeaListSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="0" selection-start="852" selection-end="852" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javascript/ListSaver.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
