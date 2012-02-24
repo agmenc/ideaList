@@ -1,7 +1,7 @@
 //
 
 function ListBuilder($root, storage) {
-    checkPreconditions($root, storage);
+    checkPreconditions($root);
     var dataName = $root.attr("id");
     var data = startingData(dataName);
     var insertionPoint = "~%~";
@@ -9,7 +9,7 @@ function ListBuilder($root, storage) {
 
     this.saveLocally = function () { storage.save(dataName, data); };
 
-    function checkPreconditions($rootElement, storageProvider) {
+    function checkPreconditions($rootElement) {
         if (asPlain($rootElement).hasChildNodes()) throw "Cannot bind an ideaList to a DOM object with children. Use an empty div instead.";
     }
 
@@ -37,5 +37,5 @@ function ListBuilder($root, storage) {
             '           <li><span>Monkeys</span></li>' +
             '       </ul>' +
             '   </div>' +
-            '</div>')
+            '</div>');
 }
