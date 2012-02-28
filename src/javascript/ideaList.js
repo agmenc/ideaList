@@ -4,16 +4,24 @@ function IdeaList($root) {
     var $selectedNode;
     var originalText = "";
     var $options = $("#options");
-    var $newChildTemplate = $("#newChild").find("li");
+    var $newListItem = $("#newChild");
 
     $root.find("li").each(function () { treeify($(this)); });
 
-    $options.find("#addChild").click(function (event) {
-        var $newChild = $newChildTemplate.clone();
-        $selectedNode.parent().find("ul").append(treeify($newChild));
+    $options.find("#addChild").click(addChild);
+
+    function addChild(event) {
+        var $newChild = $newListItem.find("li").clone();
+        listOfChildren($selectedNode).append(treeify($newChild));
         event.preventDefault();
         event.stopPropagation();
-    });
+    }
+
+    function listOfChildren($span) {
+        var $listItem = $span.parent();
+        if ($listItem.find("ul").length == 0) $listItem.append("<ul></ul>");
+        return $listItem.find("ul");
+    }
 
     function treeify($listItem) {
         $listItem.click(function (event) {
@@ -34,7 +42,6 @@ function IdeaList($root) {
 
         originalText = $target.text();
         $target.addClass("selected");
-        console.dir("$options = " + $options);
         $target.after($options);
         $selectedNode = $target;
         asPlain($target).contentEditable = "true";

@@ -33,9 +33,7 @@ function ListBuilder($root, storage) {
             '<div class="hidden">' +
             '   <div id="options" class="options"><a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a></div>' +
             '   <div id="newChild">' +
-            '       <ul>' +
-            '           <li><span>Monkeys</span></li>' +
-            '       </ul>' +
+            '       <li><span>Start Typing</span></li>' +
             '   </div>' +
             '</div>');
 }

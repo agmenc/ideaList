@@ -51,13 +51,8 @@ describe('ListBuilder', function () {
         }
     });
     it('Leaves some hidden options and a template for the main list to use', function () {
-        var hids = emptyDiv.find("div.hidden");
-        console.log("hids = " + hids);
-        var hid = hids.first();
-        console.log("hid = " + hid);
-        console.dir("hid = " + hid);
-        var hiddenDivContents = hid.html();
-        console.log("hiddenDivContents = " + hiddenDivContents);
+        var hiddenDivContents = emptyDiv.find("div.hidden").first().html();
+
         expect(hiddenDivContents).toContain('<div id="options" class="options">');
         expect(hiddenDivContents).toContain('<div id="newChild">');
     });
