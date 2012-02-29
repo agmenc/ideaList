@@ -16,10 +16,10 @@ beforeEach(function () {
     emptyDiv = $("#emptyDiv");
 });
 
-describe('ListBuilder', function () {
+describe('Builder', function () {
     beforeEach(function () {
         emptyDiv.html("");
-        listBuilder = new ListBuilder($("#emptyDiv"), storage);
+        listBuilder = new Builder($("#emptyDiv"), storage);
     });
 
     it('Given an empty div, turns it into an empty ideaList', function () {
@@ -29,7 +29,7 @@ describe('ListBuilder', function () {
         emptyDiv.html("");
         spyOn(storage, 'retrieve');
 
-        listBuilder = new ListBuilder($("#emptyDiv"), storage);
+        listBuilder = new Builder($("#emptyDiv"), storage);
 
         expect(storage.retrieve).toHaveBeenCalledWith("emptyDiv");
     });
@@ -37,7 +37,7 @@ describe('ListBuilder', function () {
         spyOn(storage, 'retrieve').andReturn(new Idea("monkeys"));
         emptyDiv.html("");
 
-        listBuilder = new ListBuilder($("#emptyDiv"), storage);
+        listBuilder = new Builder($("#emptyDiv"), storage);
 
         expect(emptyDiv.html()).toContain('<ul><li><span>monkeys</span></li></ul>');
     });
@@ -45,7 +45,7 @@ describe('ListBuilder', function () {
         $("body").append('<div id="divWithChildren" class="ideaList"><span>You are a monkey</span></div>');
 
         try {
-            listBuilder = new ListBuilder($("#divWithChildren"), storage);
+            listBuilder = new Builder($("#divWithChildren"), storage);
         } catch (e) {
             expect(e).toEqual("Cannot bind an ideaList to a DOM object with children. Use an empty div instead.");
         }

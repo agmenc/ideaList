@@ -1,6 +1,6 @@
 //
 
-function ListBuilder($root, storage) {
+function Builder($root, storage) {
     checkPreconditions($root);
     var dataName = $root.attr("id");
     var data = startingData(dataName);

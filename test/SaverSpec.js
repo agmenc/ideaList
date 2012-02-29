@@ -1,6 +1,6 @@
 //
 
-describe('ListSaver', function () {
+describe('Saver', function () {
     it('Traverses the HTML to construct JSON to parse and save when saving locally', function () {
         expect(false).toEqual(true);
     });

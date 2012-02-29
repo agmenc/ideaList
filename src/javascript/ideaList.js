@@ -1,6 +1,6 @@
 //
 
-function IdeaList($root) {
+function IdeaList($root, saver) {
     var $selectedNode;
     var originalText = "";
     var $options = $("#options");
@@ -48,7 +48,7 @@ function IdeaList($root) {
     }
 
     function saveIfChanged($node, original) {
-        if ($node.text() != original) storage.save("monkeys", $node.text());
+        if ($node.text() != original) saver.save($root);
     }
 
     function expandContract($elem) {

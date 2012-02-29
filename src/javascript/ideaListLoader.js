@@ -2,7 +2,7 @@
 
 jQuery(document).ready(function () {
     $("div.ideaList").each(function () {
-        new ListBuilder($(this), new Storage());
+        new Builder($(this), new Storage());
         new IdeaList($(this));
     })
 });
