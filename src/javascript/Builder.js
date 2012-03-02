@@ -28,12 +28,12 @@ function Builder($root, storage) {
         return accumulator.replace(insertionPoint, "");
     }
 
-    $root.append(traverseAndBuild([data], '<ul>' + insertionPoint + '</ul>'));
     $root.append('' +
             '<div class="hidden">' +
-            '   <div id="options" class="options"><a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a></div>' +
+            '   <div id="' + dataName + '_options" class="options"><a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a></div>' +
             '   <div id="newChild">' +
             '       <li><span>Start Typing</span></li>' +
             '   </div>' +
             '</div>');
+    $root.append(traverseAndBuild([data], '<ul>' + insertionPoint + '</ul>'));
 }

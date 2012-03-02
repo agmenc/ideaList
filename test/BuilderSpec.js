@@ -53,7 +53,7 @@ describe('Builder', function () {
     it('Leaves some hidden options and a template for the main list to use', function () {
         var hiddenDivContents = emptyDiv.find("div.hidden").first().html();
 
-        expect(hiddenDivContents).toContain('<div id="options" class="options">');
+        expect(hiddenDivContents).toContain('<div id="emptyDiv_options" class="options">');
         expect(hiddenDivContents).toContain('<div id="newChild">');
     });
 });

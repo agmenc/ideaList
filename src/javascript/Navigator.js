@@ -1,14 +1,27 @@
 //
 
-function IdeaList($root, saver) {
+function Navigator($root, saver) {
+    verifyInputs();
+    var dataName = $root.attr("id");
+    var $options = $("#" + dataName + "_options");
+    verifyOptions();
     var $selectedNode;
     var originalText = "";
-    var $options = $("#options");
     var $newListItem = $("#newChild");
 
     $root.find("li").each(function () { treeify($(this)); });
 
     $options.find("#addChild").click(addChild);
+
+    function verifyInputs() {
+        console.log("verifying inputs");
+        if (!saver) throw "No saver provided";
+        if (!($root && $root.hasClass("ideaList"))) throw "No root node provided";
+    }
+
+    function verifyOptions() {
+        if (!$options || $options.length == 0) throw "Cannot find options div in Navigator. Looking for " + $options.selector;
+    }
 
     function addChild(event) {
         var $newChild = $newListItem.find("li").clone();
