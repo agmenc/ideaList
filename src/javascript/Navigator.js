@@ -3,28 +3,33 @@
 function Navigator($root, saver) {
     verifyInputs();
     var dataName = $root.attr("id");
-    var $options = $("#" + dataName + "_options");
-    verifyOptions();
     var $selectedNode;
     var originalText = "";
-    var $newListItem = $("#newChild");
 
     $root.find("li").each(function () { treeify($(this)); });
 
-    $options.find("#addChild").click(addChild);
+    $root.append('' +
+            '<div class="hidden">' +
+            '   <div id="' + dataName + '_options" class="options"><a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a></div>' +
+            '   <div id="newChild">' +
+            '       <ul>' +
+            '           <li><span>New idea</span></li>' +
+            '       </ul>' +
+            '   </div>' +
+            '</div>');
+
+    options().find("#addChild").click(addChild);
+
+    function options() { return $("#" + dataName + "_options") }
+    function newListItem() { return $("#newChild") }
 
     function verifyInputs() {
-        console.log("verifying inputs");
         if (!saver) throw "No saver provided";
         if (!($root && $root.hasClass("ideaList"))) throw "No root node provided";
     }
 
-    function verifyOptions() {
-        if (!$options || $options.length == 0) throw "Cannot find options div in Navigator. Looking for " + $options.selector;
-    }
-
     function addChild(event) {
-        var $newChild = $newListItem.find("li").clone();
+        var $newChild = newListItem().find("li").clone();
         listOfChildren($selectedNode).append(treeify($newChild));
         event.preventDefault();
         event.stopPropagation();
@@ -55,7 +60,7 @@ function Navigator($root, saver) {
 
         originalText = $target.text();
         $target.addClass("selected");
-        $target.after($options);
+        $target.after(options());
         $selectedNode = $target;
         asPlain($target).contentEditable = "true";
     }

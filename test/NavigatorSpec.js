@@ -6,14 +6,6 @@ var ideaList;
 var PRE_CANNED_LIST = '' +
         '<div id="preCannedList" class="ideaList">' +
         '   <ul><li class="expanded"><span>A pre-canned list</span></li></ul>' +
-        '   <div class="hidden">' +
-        '      <div id="preCannedList_options" class="options"><a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a></div>' +
-        '      <div id="newChild">' +
-        '          <ul>' +
-        '              <li><span>Start Typing</span></li>' +
-        '          </ul>' +
-        '      </div>' +
-        '   </div>' +
         '</div>';
 var NOT_A_LIST = '<div id="someRootWithoutIdeaListClass"></div>';
 var NO_OPTIONS_LIST = '<div id="noOptionsList" class="ideaList"></div>';
@@ -31,9 +23,7 @@ describe('Navigator', function () {
 
     beforeEach(function () {
         $preCannedList.html(PRE_CANNED_LIST);
-        console.log("1");
         ideaList = new Navigator($preCannedList, saver);
-        console.log("2");
     });
 
     it('Fails noisily if an invalid root node is provided', function () {
@@ -45,10 +35,13 @@ describe('Navigator', function () {
             new Navigator($preCannedList, null);
         }).toThrow("No saver provided");
     });
-    it('Fails noisily if it cannot find a hidden options div bundled with the root', function () {
-        expect(function() {
-            new Navigator($("#noOptionsList"), saver);
-        }).toThrow("Cannot find options div in Navigator. Looking for #noOptionsList_options");
+    it('Adds some hidden options and templates for creating new items', function () {
+        var $hiddenDiv = $preCannedList.find("div.hidden").first();
+        var $optionsDiv = $hiddenDiv.find("#preCannedList_options");
+        var $listTemplate = $hiddenDiv.find("#newChild ul");
+
+        expect($optionsDiv.html()).toEqual('<a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a>');
+        expect($listTemplate.html()).toContain('<li><span>New idea</span></li>');
     });
     it('Allows the user to select a node', function () {
         firstItem().click();
@@ -58,14 +51,14 @@ describe('Navigator', function () {
     it('Displays options to add or delete child nodes', function () {
         firstItem().click();
 
-        expect($preCannedList.html()).toContain('<div id="preCannedList_options" class="options"><a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a></div>');
+        expect(firstItem().html()).toContain('<div id="preCannedList_options" class="options"><a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a></div>');
     });
     it('Adds a <ul></ul> containing a <li></li> when adding the first child node', function () {
         firstItem().click();
 
         addButton().click();
 
-        expect(firstItem().html()).toContain('<ul><li class="expanded"><span>Start Typing</span></li></ul>');
+        expect(firstItem().html()).toContain('<ul><li class="expanded"><span>New idea</span></li></ul>');
     });
     it('Only adds a <li></li> when adding subsequent child nodes', function () {
         firstItem().click();
@@ -73,7 +66,7 @@ describe('Navigator', function () {
         addButton().click();
         addButton().click();
 
-        expect(firstItem().html()).toContain('<ul><li class="expanded"><span>Start Typing</span></li><li class="expanded"><span>Start Typing</span></li></ul>');
+        expect(firstItem().html()).toContain('<ul><li class="expanded"><span>New idea</span></li><li class="expanded"><span>New idea</span></li></ul>');
     });
     it('Notices when a node has changed and asks the saver to save', function () {
         spyOn(saver, 'save');
