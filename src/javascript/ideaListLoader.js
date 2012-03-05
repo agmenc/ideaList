@@ -16,4 +16,7 @@ function asPlain($jquerifiedElement) {
 function Idea(description, children) {
     this.description = description;
     this.kids = children ? children : [];
+
+    this.hasChildren = function() { return this.kids.length > 0; };
+    this.print = function() { return this.description + " [" + this.kids.length + "]"; };
 }

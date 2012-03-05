@@ -17,14 +17,10 @@ function Builder($root, storage) {
         return locallySaved ? locallySaved : new Idea("Start Typing");
     }
 
-    function hasChildren(jsonNode) { return jsonNode.kids.length > 0; }
-
-    function print(jsonNode) { return jsonNode.description + " [" + jsonNode.kids.length + "]"; }
-
     function traverseAndBuild(nodes, accumulator) {
         $.each(nodes, function (index, node) {
             accumulator = accumulator.replace(insertionPoint, itemTemplate.replace("d", node.description));
-            if (hasChildren(node)) {
+            if (node.hasChildren()) {
                 accumulator = traverseAndBuild(node.kids, accumulator.replace(insertionPoint, '<ul>' + insertionPoint + '</ul>' + exitPoint));
                 accumulator = accumulator.replace(insertionPoint, "");
                 accumulator = accumulator.replace(exitPoint, insertionPoint);
