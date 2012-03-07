@@ -19,6 +19,10 @@ beforeEach(function () {
     saver = new Saver($preCannedList);
 });
 
+afterEach(function () {
+    $preCannedList.remove();
+});
+
 describe('Navigator', function () {
 
     beforeEach(function () {
