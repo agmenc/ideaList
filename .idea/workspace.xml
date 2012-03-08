@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d62d33a-6d97-4201-aaf3-846514881d45" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/javascript/Idea.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/IdeaSpec.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/html/IdeaList.html" afterPath="$PROJECT_DIR$/src/html/IdeaList.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/javascript/Builder.js" afterPath="$PROJECT_DIR$/src/javascript/Builder.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/javascript/Idea.js" afterPath="$PROJECT_DIR$/src/javascript/Idea.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/javascript/Saver.js" afterPath="$PROJECT_DIR$/src/javascript/Saver.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/javascript/ideaListLoader.js" afterPath="$PROJECT_DIR$/src/javascript/ideaListLoader.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/BuilderSpec.js" afterPath="$PROJECT_DIR$/test/BuilderSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/NavigatorSpec.js" afterPath="$PROJECT_DIR$/test/NavigatorSpec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/javascript/Storage.js" afterPath="$PROJECT_DIR$/src/javascript/Storage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/IdeaSpec.js" afterPath="$PROJECT_DIR$/test/IdeaSpec.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/SaverSpec.js" afterPath="$PROJECT_DIR$/test/SaverSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/SpecRunner.html" afterPath="$PROJECT_DIR$/test/SpecRunner.html" />
     </list>
     <ignored path="ideaList.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,7 +68,16 @@
       <file leaf-file-name="Saver.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/javascript/Saver.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="42" selection-start="270" selection-end="270" vertical-scroll-proportion="0.0">
+            <state line="7" column="21" selection-start="270" selection-end="270" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Storage.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/javascript/Storage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="0" selection-start="716" selection-end="716" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -82,34 +86,25 @@
       <file leaf-file-name="SaverSpec.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/SaverSpec.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="8" selection-start="1056" selection-end="1186" vertical-scroll-proportion="0.0">
+            <state line="36" column="71" selection-start="1119" selection-end="1119" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Idea.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Idea.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/javascript/Idea.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="0" selection-start="499" selection-end="499" vertical-scroll-proportion="0.27925533">
+            <state line="11" column="28" selection-start="442" selection-end="442" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IdeaSpec.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="IdeaSpec.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/IdeaSpec.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="0" selection-start="534" selection-end="534" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EcmaScript5.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavascriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript5.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="158" column="5" selection-start="2965" selection-end="2965" vertical-scroll-proportion="0.0">
+            <state line="1" column="0" selection-start="3" selection-end="3" vertical-scroll-proportion="0.019946808">
               <folding />
             </state>
           </provider>
@@ -130,12 +125,10 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/html/SaveACopy.html" />
         <option value="$PROJECT_DIR$/src/css/ideaList.css" />
         <option value="$PROJECT_DIR$/test/ideaList.js" />
         <option value="$PROJECT_DIR$/src/html/Boxy.html" />
         <option value="$PROJECT_DIR$/test/ideaListSpec.js" />
-        <option value="$PROJECT_DIR$/src/javascript/Storage.js" />
         <option value="$PROJECT_DIR$/test/ListSaverSpec.js" />
         <option value="$PROJECT_DIR$/test/StorageSpec.js" />
         <option value="$PROJECT_DIR$/src/javascript/ListBuilder.js" />
@@ -148,14 +141,16 @@
         <option value="$PROJECT_DIR$/src/javascript/Navigator.js" />
         <option value="$PROJECT_DIR$/test/NavigatorSpec.js" />
         <option value="$PROJECT_DIR$/test/BuilderSpec.js" />
-        <option value="$PROJECT_DIR$/src/javascript/Saver.js" />
         <option value="$PROJECT_DIR$/src/javascript/Builder.js" />
-        <option value="$PROJECT_DIR$/test/SaverSpec.js" />
         <option value="$PROJECT_DIR$/src/javascript/ideaListLoader.js" />
         <option value="$PROJECT_DIR$/test/SpecRunner.html" />
         <option value="$PROJECT_DIR$/src/html/IdeaList.html" />
+        <option value="$PROJECT_DIR$/test/jasmine-1.1.0/jasmine.js" />
         <option value="$PROJECT_DIR$/test/IdeaSpec.js" />
         <option value="$PROJECT_DIR$/src/javascript/Idea.js" />
+        <option value="$PROJECT_DIR$/test/SaverSpec.js" />
+        <option value="$PROJECT_DIR$/src/javascript/Saver.js" />
+        <option value="$PROJECT_DIR$/src/javascript/Storage.js" />
       </list>
     </option>
   </component>
@@ -223,6 +218,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ideaList" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ideaList" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jasmine-1.1.0" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -489,7 +502,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18318966" sideWeight="0.42105263" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18318966" sideWeight="0.42105263" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -533,7 +546,7 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made Idea class much more better" />
+    <option name="LAST_COMMIT_MESSAGE" value="Taught jasmine how to compare functions when doing an object equals" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -561,9 +574,18 @@
     <MESSAGE value="Now verifies that the correct options div has been provided by the Builder. Names are better." />
     <MESSAGE value="Made traversal actually work for the load, and moved creation of options into the Navigator, since it is the only thing that cares about options." />
     <MESSAGE value="Made Idea class much more better" />
+    <MESSAGE value="Taught Idea how to jsonify itself." />
+    <MESSAGE value="Taught jasmine how to compare functions when doing an object equals" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/test/jasmine-1.1.0/jasmine.js</url>
+          <line>878</line>
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/javascript/tiddlyWikiSave.js">
@@ -601,23 +623,9 @@
         <state line="9" column="22" selection-start="145" selection-end="146" vertical-scroll-proportion="0.17928287" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/StorageSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="31" selection-start="69" selection-end="69" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/html/IdeaList-backup.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="42" selection-start="135" selection-end="135" vertical-scroll-proportion="0.04249292">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/javascript/Storage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="45" selection-start="764" selection-end="764" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -632,13 +640,6 @@
     <entry file="file://$PROJECT_DIR$/src/javascript/Navigator.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="43" selection-start="529" selection-end="529" vertical-scroll-proportion="0.27925533">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/javascript/Saver.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="42" selection-start="270" selection-end="270" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -660,13 +661,6 @@
     <entry file="file://$PROJECT_DIR$/src/html/IdeaList.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="41" selection-start="869" selection-end="869" vertical-scroll-proportion="0.4532967">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/SaverSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="8" selection-start="1056" selection-end="1186" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -694,21 +688,56 @@
     </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavascriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript5.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="158" column="5" selection-start="2965" selection-end="2965" vertical-scroll-proportion="0.0">
+        <state line="158" column="5" selection-start="2965" selection-end="2965" vertical-scroll-proportion="0.3324468">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/IdeaSpec.js">
+    <entry file="file://$PROJECT_DIR$/test/jasmine-1.1.0/jasmine.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="534" selection-end="534" vertical-scroll-proportion="0.0">
+        <state line="900" column="3" selection-start="23602" selection-end="23602" vertical-scroll-proportion="0.3723404">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/javascript/Idea.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="499" selection-end="499" vertical-scroll-proportion="0.27925533">
+        <state line="11" column="28" selection-start="442" selection-end="442" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javascript/Saver.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="21" selection-start="270" selection-end="270" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/StorageSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="31" selection-start="69" selection-end="69" vertical-scroll-proportion="0.059840426">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javascript/Storage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="0" selection-start="716" selection-end="716" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/SaverSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="71" selection-start="1119" selection-end="1119" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/IdeaSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="3" selection-end="3" vertical-scroll-proportion="0.019946808">
           <folding />
         </state>
       </provider>
