@@ -934,6 +934,10 @@ jasmine.Env.prototype.equals_ = function(a, b, mismatchKeys, mismatchValues) {
     return this.compareObjects_(a, b, mismatchKeys, mismatchValues);
   }
 
+  if (typeof a === "function" && typeof b === "function") {
+      return a.name === b.name;
+  }
+
   //Straight check
   return (a === b);
 };
