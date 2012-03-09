@@ -1,9 +1,9 @@
 //
 
 var saver;
+var storage;
 
 beforeEach(function () {
-    storage = new StorageStub();
     $("body").append('' +
             '<div id="someIdeaList" class="ideaList">' +
             '   <ul>' +
@@ -21,7 +21,8 @@ beforeEach(function () {
             '   </ul>' +
             '</div>'
     );
-    saver = new Saver();
+    storage = new StorageStub();
+    saver = new Saver(storage);
 });
 
 afterEach(function () {
@@ -34,17 +35,7 @@ describe('Saver', function () {
 
         saver.save($("#someIdeaList"));
 
-        var expected = new Idea("Root node", [new Idea("Child 1"), new Idea("Child 2", [new Idea("Grandchild 1")]), new Idea("Child 3")]);
-        var strung = JSON.stringify(expected);
-        console.log("strung = " + strung);
-        var deFunctionedExpected = JSON.parse(strung);
-        expect(storage.save).toHaveBeenCalledWith("someIdeaList", deFunctionedExpected);
-    });
-    it('Saves the state of the ideaList as a stringified JSON object', function () {
-        spyOn(storage, 'save');
-
-        saver.save($("#someIdeaList"));
-
-        expect(storage.retrieve("emptyDiv")).toEqual('{"description": "Root node", "children": [{"description": "Child 1", "children": []}]}');
+        var jsonTree = new Idea("Root node", [new Idea("Child 1"), new Idea("Child 2", [new Idea("Grandchild 1")]), new Idea("Child 3")]);
+        expect(storage.save).toHaveBeenCalledWith("someIdeaList", strung(jsonTree));
     });
 });

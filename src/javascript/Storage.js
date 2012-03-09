@@ -26,5 +26,3 @@ function Storage() {
         return true;
     }
 }
-
-// JSON.stringify(object), JSON.parse(String)

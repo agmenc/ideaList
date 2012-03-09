@@ -17,6 +17,6 @@ describe('Idea', function () {
     it('Knows how to inflate itself from a strict JSON format', function () {
         var inflated = Idea.inflateFrom(ideaListAsString);
 
-        expect(inflated).toEqual(ideaListAsObject);
+        expect(strung(inflated)).toEqual(strung(ideaListAsObject));
     });
 });
