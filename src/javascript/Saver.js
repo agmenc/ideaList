@@ -1,6 +1,8 @@
 //
 
 function Saver(storage) {
+    this.clear = function() { storage.clear(); };
+
     this.save = function ($rootNode) {
         var dataName = $rootNode.attr("id");
         var $rootListItem = $rootNode.find("ul li").first();

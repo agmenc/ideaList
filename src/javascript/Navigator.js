@@ -11,6 +11,7 @@ function Navigator($root, saver) {
     $root.append('' +
             '<div class="hidden">' +
             '   <div id="' + dataName + '_options" class="options"><a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a></div>' +
+            '   <a id="' + dataName + '_clearAll" >Clear all</a>' +
             '   <div id="newChild">' +
             '       <ul>' +
             '           <li><span>New idea</span></li>' +
@@ -19,7 +20,9 @@ function Navigator($root, saver) {
             '</div>');
 
     options().find("#addChild").click(addChild);
+    clearAll().click(function() {saver.clear()});
 
+    function clearAll() { return $("#" + dataName + "_clearAll") }
     function options() { return $("#" + dataName + "_options") }
     function newListItem() { return $("#newChild") }
 
@@ -30,6 +33,7 @@ function Navigator($root, saver) {
 
     function addChild(event) {
         var $newChild = newListItem().find("li").clone();
+        console.dir($newChild);
         listOfChildren($selectedNode).append(treeify($newChild));
         event.preventDefault();
         event.stopPropagation();

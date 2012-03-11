@@ -1,6 +1,7 @@
 //
 
 function Idea(description, children) {
+    var self = this;
     var desc = description;
     var kids = children ? children : [];
 
@@ -12,6 +13,7 @@ function Idea(description, children) {
     this.toJSON = function () {
         return {description:desc, children:kids};
     };
+    this.toString = function() { return JSON.stringify(self.toJSON()) };
 }
 
 Idea.inflateFrom = function (jsonString) {

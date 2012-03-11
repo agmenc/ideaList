@@ -1,12 +1,17 @@
 //
 
-function Storage() {
+function StorageProxy() {
     this.save = function (key, value) {
+        console.log("saving ===> " + value);
         tryIf(storable(), function () {localStorage.setItem(key, value)});
     };
 
     this.retrieve = function (key) {
         return tryIf(storable(), function () {return localStorage.getItem(key)});
+    };
+
+    this.clear = function (key) {
+        return tryIf(storable(), function () {return localStorage.clear()});
     };
 
     function tryIf(check, func) {
@@ -19,10 +24,7 @@ function Storage() {
     }
 
     function storable() {
-        if (typeof(localStorage) == "undefined") {
-            alert("Your browser does not support HTML5 localStorage. Try upgrading.");
-            return false;
-        }
+        if (typeof(localStorage) == "undefined") throw "Your browser does not support HTML5 localStorage. Try upgrading.";
         return true;
     }
 }

@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7d62d33a-6d97-4201-aaf3-846514881d45" name="Default" comment="">
+    <list default="true" id="7d62d33a-6d97-4201-aaf3-846514881d45" name="Default" comment="Untaught jasmine about functions. Needs a re-think. Made Saver correctly build the JSON tree.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/StorageProxySpec.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/javascript/tiddlyWikiSave.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/StorageSpec.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/javascript/Storage.js" afterPath="$PROJECT_DIR$/src/javascript/StorageProxy.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/html/IdeaList-backup.html" afterPath="$PROJECT_DIR$/src/html/IdeaList-backup.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/html/IdeaList.html" afterPath="$PROJECT_DIR$/src/html/IdeaList.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/javascript/Builder.js" afterPath="$PROJECT_DIR$/src/javascript/Builder.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/javascript/Idea.js" afterPath="$PROJECT_DIR$/src/javascript/Idea.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/javascript/Navigator.js" afterPath="$PROJECT_DIR$/src/javascript/Navigator.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/javascript/Saver.js" afterPath="$PROJECT_DIR$/src/javascript/Saver.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/javascript/Storage.js" afterPath="$PROJECT_DIR$/src/javascript/Storage.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/javascript/ideaListLoader.js" afterPath="$PROJECT_DIR$/src/javascript/ideaListLoader.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/BuilderSpec.js" afterPath="$PROJECT_DIR$/test/BuilderSpec.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/IdeaSpec.js" afterPath="$PROJECT_DIR$/test/IdeaSpec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/NavigatorSpec.js" afterPath="$PROJECT_DIR$/test/NavigatorSpec.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/SaverSpec.js" afterPath="$PROJECT_DIR$/test/SaverSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/jasmine-1.1.0/jasmine.js" afterPath="$PROJECT_DIR$/test/jasmine-1.1.0/jasmine.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/SpecRunner.html" afterPath="$PROJECT_DIR$/test/SpecRunner.html" />
     </list>
     <ignored path="ideaList.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,28 +76,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Storage.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/javascript/Storage.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="0" selection-start="716" selection-end="716" vertical-scroll-proportion="0.53856385">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Saver.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/javascript/Saver.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="35" selection-start="877" selection-end="877" vertical-scroll-proportion="0.0">
+            <state line="3" column="49" selection-start="79" selection-end="79" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IdeaSpec.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/IdeaSpec.js">
+      <file leaf-file-name="BuilderSpec.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/BuilderSpec.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="65" selection-start="755" selection-end="755" vertical-scroll-proportion="0.0">
+            <state line="35" column="30" selection-start="1246" selection-end="1246" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Builder.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/javascript/Builder.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="66" selection-start="802" selection-end="802" vertical-scroll-proportion="0.37898937">
               <folding />
             </state>
           </provider>
@@ -96,25 +106,7 @@
       <file leaf-file-name="SaverSpec.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/SaverSpec.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="7" selection-start="1299" selection-end="1299" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ideaListLoader.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/javascript/ideaListLoader.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="34" selection-start="347" selection-end="347" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Navigator.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/javascript/Navigator.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="4" selection-start="63" selection-end="95" vertical-scroll-proportion="0.0">
+            <state line="54" column="27" selection-start="1766" selection-end="1766" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -135,12 +127,10 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/css/ideaList.css" />
         <option value="$PROJECT_DIR$/test/ideaList.js" />
         <option value="$PROJECT_DIR$/src/html/Boxy.html" />
         <option value="$PROJECT_DIR$/test/ideaListSpec.js" />
         <option value="$PROJECT_DIR$/test/ListSaverSpec.js" />
-        <option value="$PROJECT_DIR$/test/StorageSpec.js" />
         <option value="$PROJECT_DIR$/src/javascript/ListBuilder.js" />
         <option value="$PROJECT_DIR$/src/javascript/IdeaList.js" />
         <option value="$PROJECT_DIR$/test/ListBuilderSpec.js" />
@@ -148,19 +138,21 @@
         <option value="$PROJECT_DIR$/src/javascript/listBuilder.js" />
         <option value="$PROJECT_DIR$/test/IdeaListSpec.js" />
         <option value="$PROJECT_DIR$/src/javascript/ideaList.js" />
-        <option value="$PROJECT_DIR$/src/javascript/Navigator.js" />
-        <option value="$PROJECT_DIR$/test/NavigatorSpec.js" />
-        <option value="$PROJECT_DIR$/test/BuilderSpec.js" />
-        <option value="$PROJECT_DIR$/src/javascript/Builder.js" />
         <option value="$PROJECT_DIR$/test/SpecRunner.html" />
-        <option value="$PROJECT_DIR$/src/html/IdeaList.html" />
-        <option value="$PROJECT_DIR$/src/javascript/Idea.js" />
-        <option value="$PROJECT_DIR$/src/javascript/Storage.js" />
         <option value="$PROJECT_DIR$/test/jasmine-1.1.0/jasmine.js" />
-        <option value="$PROJECT_DIR$/src/javascript/ideaListLoader.js" />
-        <option value="$PROJECT_DIR$/src/javascript/Saver.js" />
         <option value="$PROJECT_DIR$/test/IdeaSpec.js" />
+        <option value="$PROJECT_DIR$/src/javascript/ideaListLoader.js" />
+        <option value="$PROJECT_DIR$/src/html/IdeaList.html" />
+        <option value="$PROJECT_DIR$/src/html/IdeaList-backup.html" />
+        <option value="$PROJECT_DIR$/test/NavigatorSpec.js" />
+        <option value="$PROJECT_DIR$/src/javascript/Saver.js" />
+        <option value="$PROJECT_DIR$/test/StorageSpec.js" />
+        <option value="$PROJECT_DIR$/test/BuilderSpec.js" />
+        <option value="$PROJECT_DIR$/src/javascript/Idea.js" />
+        <option value="$PROJECT_DIR$/src/javascript/Navigator.js" />
+        <option value="$PROJECT_DIR$/src/javascript/Storage.js" />
         <option value="$PROJECT_DIR$/test/SaverSpec.js" />
+        <option value="$PROJECT_DIR$/src/javascript/Builder.js" />
       </list>
     </option>
   </component>
@@ -556,7 +548,7 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Taught Idea to inflate itself from a raw JSON string" />
+    <option name="LAST_COMMIT_MESSAGE" value="Untaught jasmine about functions. Needs a re-think. Made Saver correctly build the JSON tree." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -587,6 +579,7 @@
     <MESSAGE value="Taught Idea how to jsonify itself." />
     <MESSAGE value="Taught jasmine how to compare functions when doing an object equals" />
     <MESSAGE value="Taught Idea to inflate itself from a raw JSON string" />
+    <MESSAGE value="Untaught jasmine about functions. Needs a re-think. Made Saver correctly build the JSON tree." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -595,15 +588,14 @@
           <url>file://$PROJECT_DIR$/test/jasmine-1.1.0/jasmine.js</url>
           <line>878</line>
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/test/BuilderSpec.js</url>
+          <line>31</line>
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/javascript/tiddlyWikiSave.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="253" column="61" selection-start="10484" selection-end="10488" vertical-scroll-proportion="3.9640958" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/html/SaveACopy.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="34" selection-start="200" selection-end="200" vertical-scroll-proportion="0.16483517" />
@@ -634,13 +626,6 @@
         <state line="9" column="22" selection-start="145" selection-end="146" vertical-scroll-proportion="0.17928287" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/html/IdeaList-backup.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="42" selection-start="135" selection-end="135" vertical-scroll-proportion="0.04249292">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/javascript/jquery-1.7.1.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="209" column="4" selection-start="5835" selection-end="5835" vertical-scroll-proportion="0.3324468">
@@ -655,65 +640,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/html/IdeaList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="41" selection-start="869" selection-end="869" vertical-scroll-proportion="0.4532967">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/NavigatorSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="16" selection-start="146" selection-end="146" vertical-scroll-proportion="0.13962767">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/javascript/Builder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="102" selection-start="951" selection-end="960" vertical-scroll-proportion="0.4587766">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/BuilderSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="30" selection-start="534" selection-end="534" vertical-scroll-proportion="0.49867022">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavascriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript5.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="158" column="5" selection-start="2965" selection-end="2965" vertical-scroll-proportion="0.3324468">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/StorageSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="31" selection-start="69" selection-end="69" vertical-scroll-proportion="0.059840426">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/javascript/Idea.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="28" selection-start="442" selection-end="442" vertical-scroll-proportion="0.21941489">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/javascript/Navigator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="4" selection-start="63" selection-end="95" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/javascript/ideaListLoader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="34" selection-start="347" selection-end="347" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -725,30 +654,107 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/javascript/Saver.js">
+    <entry file="file://$PROJECT_DIR$/src/javascript/ideaListLoader.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="35" selection-start="877" selection-end="877" vertical-scroll-proportion="0.0">
+        <state line="16" column="9" selection-start="330" selection-end="330" vertical-scroll-proportion="0.31914893">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/IdeaSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="65" selection-start="755" selection-end="755" vertical-scroll-proportion="0.0">
+        <state line="6" column="0" selection-start="80" selection-end="80" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/IdeaList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="6" selection-start="739" selection-end="739" vertical-scroll-proportion="-5.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/NavigatorSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="85" column="0" selection-start="3267" selection-end="3267" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/IdeaList-backup.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="40" selection-start="218" selection-end="218" vertical-scroll-proportion="0.10302198">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/jasmine-1.1.0/jasmine-html.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="168" column="59" selection-start="6395" selection-end="6395" vertical-scroll-proportion="0.23271276">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javascript/Idea.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="72" selection-start="596" selection-end="596" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javascript/Navigator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="18" selection-start="1162" selection-end="1162" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavascriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/HTML5.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1367" column="18" selection-start="24039" selection-end="24039" vertical-scroll-proportion="0.63164896">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javascript/StorageProxy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="13" selection-start="17" selection-end="17" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/StorageProxySpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="7" selection-start="947" selection-end="947" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/SaverSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="7" selection-start="1299" selection-end="1299" vertical-scroll-proportion="0.0">
+        <state line="54" column="27" selection-start="1766" selection-end="1766" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/javascript/Storage.js">
+    <entry file="file://$PROJECT_DIR$/src/javascript/Saver.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="716" selection-end="716" vertical-scroll-proportion="0.53856385">
+        <state line="3" column="49" selection-start="79" selection-end="79" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/BuilderSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="30" selection-start="1246" selection-end="1246" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javascript/Builder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="66" selection-start="802" selection-end="802" vertical-scroll-proportion="0.37898937">
           <folding />
         </state>
       </provider>

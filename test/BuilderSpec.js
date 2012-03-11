@@ -1,29 +1,22 @@
 //
 
-function StorageStub() {
-    this.save = function (key, value) { };
-    this.retrieve = function (key) { };
-}
-
 var storage;
 var listBuilder;
 var $emptyDiv;
 
-beforeEach(function () {
-    storage = new StorageStub();
-    $("body").append('<div id="emptyDiv" class="ideaList"></div>');
-    $emptyDiv = $("#emptyDiv");
-});
-
-afterEach(function () {
-    $emptyDiv.remove();
-    $("#divWithChildren").remove();
-});
-
 describe('Builder', function () {
+
     beforeEach(function () {
+        storage = new StorageProxy();
+        $("body").append('<div id="emptyDiv" class="ideaList"></div>');
+        $emptyDiv = $("#emptyDiv");
         $emptyDiv.html("");
-        listBuilder = new Builder($("#emptyDiv"), storage);
+        listBuilder = new Builder($emptyDiv, storage);
+    });
+
+    afterEach(function () {
+        $emptyDiv.remove();
+        $("#divWithChildren").remove();
     });
 
     it('Given an empty div, turns it into an empty ideaList', function () {
@@ -38,14 +31,14 @@ describe('Builder', function () {
     });
     it('Uses the div id as key to find saved JSON data to populate the tree', function () {
         $emptyDiv.html("");
-        spyOn(storage, 'retrieve');
+        spyOn(storage, 'retrieve').andReturn(null);
 
-        listBuilder = new Builder($("#emptyDiv"), storage);
+        listBuilder = new Builder($emptyDiv, storage);
 
         expect(storage.retrieve).toHaveBeenCalledWith("emptyDiv");
     });
     it('Can consume the appropriate JSON object to form the root node of a tree', function () {
-        spyOn(storage, 'retrieve').andReturn(new Idea("monkeys"));
+        spyOn(storage, 'retrieve').andReturn('{"description": "monkeys", "children": []}');
         $emptyDiv.html("");
 
         listBuilder = new Builder($("#emptyDiv"), storage);
@@ -53,7 +46,7 @@ describe('Builder', function () {
         expect($emptyDiv.html()).toContain('<ul><li><span>monkeys</span></li></ul>');
     });
     it('Can consume the appropriate JSON object to form a tree', function () {
-        spyOn(storage, 'retrieve').andReturn(new Idea("trees", [new Idea("bananas"), new Idea("apples", [new Idea("cider")]), new Idea("other fruit")]));
+        spyOn(storage, 'retrieve').andReturn(strung(new Idea("trees", [new Idea("bananas"), new Idea("apples", [new Idea("cider")]), new Idea("other fruit")])));
         $emptyDiv.html("");
 
         listBuilder = new Builder($("#emptyDiv"), storage);

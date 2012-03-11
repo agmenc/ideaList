@@ -1,9 +1,10 @@
 //
 
 jQuery(document).ready(function () {
+    var storage = new StorageProxy();
     $("div.ideaList").each(function () {
-        new Builder($(this), new Storage());
-        new Navigator($(this), new Saver());
+        new Builder($(this), storage);
+        new Navigator($(this), new Saver(storage));
     })
 });
 

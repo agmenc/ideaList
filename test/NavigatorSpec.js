@@ -10,24 +10,19 @@ var PRE_CANNED_LIST = '' +
 var NOT_A_LIST = '<div id="someRootWithoutIdeaListClass"></div>';
 var NO_OPTIONS_LIST = '<div id="noOptionsList" class="ideaList"></div>';
 
-beforeEach(function () {
-    $("body")
-            .append(PRE_CANNED_LIST)
-            .append(NOT_A_LIST)
-            .append(NO_OPTIONS_LIST);
-    $preCannedList = $("#preCannedList");
-    saver = new Saver($preCannedList);
-});
-
-afterEach(function () {
-    $preCannedList.remove();
-});
-
 describe('Navigator', function () {
 
     beforeEach(function () {
-        $preCannedList.html(PRE_CANNED_LIST);
+        $("body").append(PRE_CANNED_LIST)
+                .append(NOT_A_LIST)
+                .append(NO_OPTIONS_LIST);
+        $preCannedList = $("#preCannedList");
+        saver = new Saver($preCannedList);
         ideaList = new Navigator($preCannedList, saver);
+    });
+
+    afterEach(function () {
+        $preCannedList.remove();
     });
 
     it('Fails noisily if an invalid root node is provided', function () {
@@ -84,6 +79,14 @@ describe('Navigator', function () {
         firstItem().click();
 
         expect(saver.save).toHaveBeenCalledWith($preCannedList);
+    });
+    it('Allows the user to clear the tree', function () {
+        spyOn(saver, 'clear');
+        var $clearAll = $("a#preCannedList_clearAll");
+
+        $clearAll.click();
+
+        expect(saver.clear).toHaveBeenCalled();
     });
 //    it('Notices when a node has changed and asks the saver to save', function () {
 //        spyOn(storage, 'save');
