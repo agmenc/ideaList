@@ -65,7 +65,6 @@ describe('Saver', function () {
         var jsonTree = new Idea("Root node", [new Idea("Child 1"), new Idea("Child 2", [new Idea("Grandchild 1")]), new Idea("Child 3")]);
         expect(storage.save).toHaveBeenCalledWith("someIdeaList", strung(jsonTree));
     });
-
     it('Traverses different HTML too', function () {
         $("body").append(FAILS);
         spyOn(storage, 'save');

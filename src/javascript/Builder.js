@@ -22,7 +22,6 @@ function Builder($root, storage) {
 
     function traverseAndBuild(nodes, accumulator) {
         $.each(nodes, function (index, node) {
-            console.log("node = " + node);
             accumulator = accumulator.replace(insertionPoint, itemTemplate.replace("d", node.description));
             if (node.hasChildren()) {
                 accumulator = traverseAndBuild(node.children(), accumulator.replace(insertionPoint, '<ul>' + insertionPoint + '</ul>' + exitPoint));

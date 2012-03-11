@@ -33,7 +33,6 @@ function Navigator($root, saver) {
 
     function addChild(event) {
         var $newChild = newListItem().find("li").clone();
-        console.dir($newChild);
         listOfChildren($selectedNode).append(treeify($newChild));
         event.preventDefault();
         event.stopPropagation();

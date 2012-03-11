@@ -12,6 +12,7 @@ function Saver(storage) {
     };
 
     function accumulateChildren($listItem, jsonNode) {
+
         children($listItem).each(function () {
             var child = toIdea($(this));
             if (hasChildren($(this))) accumulateChildren($(this), child);

@@ -2,7 +2,6 @@
 
 function StorageProxy() {
     this.save = function (key, value) {
-        console.log("saving ===> " + value);
         tryIf(storable(), function () {localStorage.setItem(key, value)});
     };
 
