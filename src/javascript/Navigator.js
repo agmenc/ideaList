@@ -11,7 +11,7 @@ function Navigator($root, saver) {
     $root.append('' +
             '<div class="hidden">' +
             '   <div id="' + dataName + '_options" class="options"><a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a></div>' +
-            '   <a id="' + dataName + '_clearAll" >Clear all</a>' +
+            '   <a id="' + dataName + '_clearAll" href="">Clear all</a>' +
             '   <div id="newChild">' +
             '       <ul>' +
             '           <li><span>New idea</span></li>' +
@@ -19,8 +19,10 @@ function Navigator($root, saver) {
             '   </div>' +
             '</div>');
 
+    $root.before(clearAll());
+
     options().find("#addChild").click(addChild);
-    clearAll().click(function() {saver.clear()});
+    clearAll().click(function() { saver.clear()});
 
     function clearAll() { return $("#" + dataName + "_clearAll") }
     function options() { return $("#" + dataName + "_options") }

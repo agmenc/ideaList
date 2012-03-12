@@ -17,7 +17,7 @@ describe('Navigator', function () {
                 .append(NOT_A_LIST)
                 .append(NO_OPTIONS_LIST);
         $preCannedList = $("#preCannedList");
-        saver = new Saver($preCannedList);
+        saver = new Saver(new StorageProxy());
         ideaList = new Navigator($preCannedList, saver);
     });
 
@@ -101,7 +101,7 @@ describe('Navigator', function () {
 
     function assertRootIsInvalid(someRoot) {
         expect(function() {
-            new Navigator(someRoot, new Saver());
+            new Navigator(someRoot, new Saver(new StorageProxy()));
         }).toThrow("No root node provided");
     }
 

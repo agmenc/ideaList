@@ -3,31 +3,6 @@
 var saver;
 var storage;
 
-var FAILS = '' +
-        '<div id="someId" class="ideaList">' +
-        '    <ul>' +
-        '        <li class="contracted">' +
-        '            <span class="selected" contenteditable="true">Start Typing</span>' +
-        '            <div id="someId_options" class="options">' +
-        '            <ul style="display: block;">' +
-        '                <li class="expanded">' +
-        '                    <span class="" contenteditable="true">A</span>' +
-        '                </li>' +
-        '            </ul>' +
-        '        </li>' +
-        '    </ul>' +
-        '    <div class="hidden">' +
-        '        <a id="someId_clearAll">Clear all</a>' +
-        '        <div id="newChild">' +
-        '            <ul>' +
-        '                <li>' +
-        '                    <span>New idea</span>' +
-        '                </li>' +
-        '            </ul>' +
-        '        </div>' +
-        '    </div>' +
-        '</div>';
-
 var SIMPLES = '' +
         '<div id="someIdeaList" class="ideaList">' +
         '   <ul>' +
@@ -43,6 +18,32 @@ var SIMPLES = '' +
         '           </ul>' +
         '       </li>' +
         '   </ul>' +
+        '</div>';
+
+var REAL_EXAMPLE = '' +
+        '<div id="someId" class="ideaList">' +
+        '    <ul>' +
+        '        <li class="expanded">' +
+        '            <span class="" contenteditable="true">Start Typing</span>' +
+        '            <ul style="display: block;">' +
+        '                <li class="contracted">' +
+        '                    <span class="selected" contenteditable="true">A</span>' +
+        '                    <div id="someId_options" class="options">' +
+        '                        <a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a>' +
+        '                    </div>' +
+        '                </li>' +
+        '            </ul>' +
+        '        </li>' +
+        '    </ul>' +
+        '    <div class="hidden">' +
+        '       <div id="newChild">' +
+        '           <ul>' +
+        '               <li>' +
+        '                   <span>New idea</span>' +
+        '               </li>' +
+        '           </ul>' +
+        '       </div>' +
+        '    </div>' +
         '</div>';
 
 describe('Saver', function () {
@@ -66,13 +67,13 @@ describe('Saver', function () {
         expect(storage.save).toHaveBeenCalledWith("someIdeaList", strung(jsonTree));
     });
     it('Traverses different HTML too', function () {
-        $("body").append(FAILS);
+        $("body").append(REAL_EXAMPLE);
         spyOn(storage, 'save');
 
-        saver.save($("#someIdeaList"));
+        saver.save($("#someId"));
 
         var jsonTree = new Idea("Start Typing", [new Idea("A")]);
-        expect(storage.save).toHaveBeenCalledWith("someIdeaList", strung(jsonTree));
+        expect(storage.save).toHaveBeenCalledWith("someId", strung(jsonTree));
     });
     it('Delegates to the Storage proxy to clear storage', function () {
         spyOn(storage, 'clear');

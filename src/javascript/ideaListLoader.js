@@ -17,3 +17,7 @@ function asPlain($jquerifiedElement) {
 function strung(object) {
     return JSON.stringify(object);
 }
+
+function pretty(object) {
+    return JSON.stringify(object,4);
+}

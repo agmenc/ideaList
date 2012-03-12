@@ -8,11 +8,11 @@ function Saver(storage) {
         var $rootListItem = $rootNode.find("ul li").first();
         var jsonTree = toIdea($rootListItem);
         accumulateChildren($rootListItem, jsonTree);
+        console.log("saving ==> " + pretty(jsonTree));
         storage.save(dataName, strung(jsonTree))
     };
 
     function accumulateChildren($listItem, jsonNode) {
-
         children($listItem).each(function () {
             var child = toIdea($(this));
             if (hasChildren($(this))) accumulateChildren($(this), child);
@@ -20,7 +20,10 @@ function Saver(storage) {
         });
     }
 
-    function children($listItem) { return $listItem.children().children(); }
+    function children($listItem) {
+        return $listItem.children("ul").children("li");
+    }
+
     function hasChildren($listItem) { return children($listItem).length > 0; }
 
     function toIdea($listItem) {
