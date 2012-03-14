@@ -1,33 +1,59 @@
 //
 
-var $preCannedList;
-var saver;
-var ideaList;
+var NOT_A_LIST = '<div id="notAList"></div>';
 var PRE_CANNED_LIST = '' +
         '<div id="preCannedList" class="ideaList">' +
         '   <ul><li class="expanded"><span>A pre-canned list</span></li></ul>' +
         '</div>';
-var NOT_A_LIST = '<div id="someRootWithoutIdeaListClass"></div>';
-var NO_OPTIONS_LIST = '<div id="noOptionsList" class="ideaList"></div>';
+var HIERARCHICAL_LIST = '' +
+        '<div id="hierarchicalList" class="ideaList">' +
+        '   <ul>' +
+        '       <li class="expanded">' +
+        '           <span>A pre-canned list</span>' +
+        '           <ul>' +
+        '               <li>' +
+        '                   <span>First child node</span>' +
+        '                   <ul>' +
+        '                       <li><span>First grandchild node</span></li>' +
+        '                   </ul>' +
+        '               </li>' +
+        '               <li>' +
+        '                   <span>Second child node</span>' +
+        '               </li>' +
+        '           </ul>' +
+        '       </li>' +
+        '   </ul>' +
+        '</div>';
+
+var $preCannedList;
+var $hierarchicalList;
+var $notAList;
+var saver;
+var ideaList;
+var $list;
 
 describe('Navigator', function () {
 
     beforeEach(function () {
         $("body").append(PRE_CANNED_LIST)
                 .append(NOT_A_LIST)
-                .append(NO_OPTIONS_LIST);
+                .append(HIERARCHICAL_LIST);
         $preCannedList = $("#preCannedList");
+        $hierarchicalList = $("#hierarchicalList");
+        $notAList = $("#notAList");
         saver = new Saver(new StorageProxy());
         ideaList = new Navigator($preCannedList, saver);
     });
 
     afterEach(function () {
         $preCannedList.remove();
+        $hierarchicalList.remove();
+        $notAList.remove();
     });
 
     it('Fails noisily if an invalid root node is provided', function () {
         assertRootIsInvalid(null);
-        assertRootIsInvalid($("#someRootWithoutIdealistClass"));
+        assertRootIsInvalid($("#notAList"));
     });
     it('Fails noisily if no saver is provided', function () {
         expect(function() {
@@ -43,51 +69,71 @@ describe('Navigator', function () {
         expect($listTemplate.html()).toContain('<li><span>New idea</span></li>');
     });
     it('Allows the user to select a node', function () {
-        firstItem().click();
+        $list = $preCannedList;
 
-        expect(firstItem().find("span").hasClass("selected")).toEqual(true);
+        description("A pre-canned list").click();
+
+        expect(description("A pre-canned list").hasClass("selected")).toEqual(true);
     });
     it('Displays options to add or delete child nodes', function () {
-        firstItem().click();
+        $list = $preCannedList;
 
-        expect(firstItem().html()).toContain('<div id="preCannedList_options" class="options"><a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a></div>');
+        description("A pre-canned list").click();
+
+        expect(container("A pre-canned list").html()).toContain('<div id="preCannedList_options" class="options"><a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a></div>');
     });
     it('Adds a <ul></ul> containing a <li></li> when adding the first child node', function () {
-        firstItem().click();
+        $list = $preCannedList;
 
+        description("A pre-canned list").click();
         addButton().click();
 
-        expect(firstItem().html()).toContain('<ul><li class="expanded"><span>New idea</span></li></ul>');
+        expect(container("A pre-canned list").html()).toContain('<ul><li class="expanded"><span>New idea</span></li></ul>');
     });
     it('Only adds a <li></li> when adding subsequent child nodes', function () {
-        firstItem().click();
+        $list = $preCannedList;
 
+        description("A pre-canned list").click();
         addButton().click();
         addButton().click();
 
-        expect(firstItem().html()).toContain('<ul><li class="expanded"><span>New idea</span></li><li class="expanded"><span>New idea</span></li></ul>');
+        expect(container("A pre-canned list").html()).toContain('<ul><li class="expanded"><span>New idea</span></li><li class="expanded"><span>New idea</span></li></ul>');
     });
     it('Notices when a node has changed and asks the saver to save', function () {
         spyOn(saver, 'save');
-        firstItem().click();
+        $list = $preCannedList;
+
+        description("A pre-canned list").click();
         addButton().click();
 
-        var childItem = firstItem().find("li").first();
-        childItem.click();
-        childItem.find("span").html("some tweaked value");
+        description("New idea").click();
+        description("New idea").html("some tweaked value");
 
-        firstItem().click();
-
+        description("A pre-canned list").click();
         expect(saver.save).toHaveBeenCalledWith($preCannedList);
     });
     it('Allows the user to clear the tree', function () {
         spyOn(saver, 'clear');
-        var $clearAll = $("a#preCannedList_clearAll");
+        $list = $preCannedList;
 
-        $clearAll.click();
+        clearAll().click();
 
         expect(saver.clear).toHaveBeenCalled();
     });
+    it('Allows the user to delete leaf nodes', function () {
+        $list = $hierarchicalList;
+
+        description("First grandchild node").click();
+        expect(exists(description("First grandchild node"))).toBeTruthy();
+
+        deleteButton().click();
+
+        expect(exists(description("First grandchild node"))).toBeFalsy();
+    });
+    it('Allows the user to delete node trees', function () {
+        expect(true).toEqual(false);
+    });
+    // TODO - CAS - 14/03/2012 - now we can delete the Clear All feature
 //    it('Notices when a node has changed and asks the saver to save', function () {
 //        spyOn(storage, 'save');
 //        var theList = given(Idea("root", [Idea("childOne"), Idea("childTwo")]));
@@ -105,11 +151,41 @@ describe('Navigator', function () {
         }).toThrow("No root node provided");
     }
 
-    function firstItem() {
-        return $preCannedList.find("li").first();
+    function container(text) {
+        var parent = description(text).parent("li");
+        if (parent.length == 0) throw "There is no <li></li> parent of a span containing " + text;
+        return parent;
     }
 
+    function clearAll() {
+        var dataName = $list.attr("id");
+        return $("a#" + dataName + "_clearAll").first();
+    }
+
+    function description(text) {
+        var allSpans = $list.find("span");
+        console.log(allSpans);
+        console.log("exists(allSpans) = " + exists(allSpans));
+        debug.allSpans = allSpans;
+
+        var found = allSpans.filter(function() {
+            return $(this).text() == text;
+        }).first();
+        if (!exists(found)) throw 'Could not find item containing text "' + text + '"';
+        return found;
+    }
+
+    // TODO - CAS - 14/03/2012 - Just use option("Add") and option("Delete")
     function addButton() {
-        return $("#preCannedList_options").find("a").first();
+        return options().first();
+    }
+
+    function deleteButton() {
+        return options().last();
+    }
+
+    function options() {
+        var dataName = $list.attr("id");
+        return $("#" + dataName + "_options").find("a");
     }
 });

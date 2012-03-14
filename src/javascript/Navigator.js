@@ -42,8 +42,8 @@ function Navigator($root, saver) {
 
     function listOfChildren($span) {
         var $listItem = $span.parent();
-        if ($listItem.find("ul").length == 0) $listItem.append("<ul></ul>");
-        return $listItem.find("ul");
+        if ($listItem.children("ul").length == 0) $listItem.append("<ul></ul>");
+        return $listItem.children("ul");
     }
 
     function treeify($listItem) {

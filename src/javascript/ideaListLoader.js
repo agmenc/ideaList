@@ -21,3 +21,8 @@ function strung(object) {
 function pretty(object) {
     return JSON.stringify(object,4);
 }
+
+function exists($thing) {
+    if (!$thing.size) throw "Not a JQuery object";
+    return $thing.size() > 0;
+}
