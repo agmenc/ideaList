@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7d62d33a-6d97-4201-aaf3-846514881d45" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/javascript/Navigator.js" afterPath="$PROJECT_DIR$/src/javascript/Navigator.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/NavigatorSpec.js" afterPath="$PROJECT_DIR$/test/NavigatorSpec.js" />
     </list>
     <ignored path="ideaList.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -493,7 +491,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="874" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -552,7 +550,7 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improved Navigator test and started working on node deletion." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished node deletion." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -588,6 +586,7 @@
     <MESSAGE value="Remove Sysouts" />
     <MESSAGE value="Saving bug has disappeared. NFI why." />
     <MESSAGE value="Improved Navigator test and started working on node deletion." />
+    <MESSAGE value="Finished node deletion." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
