@@ -22,6 +22,7 @@ function Navigator($root, saver) {
     $root.before(clearAll());
 
     options().find("#addChild").click(addChild);
+    options().find("#deleteChild").click(deleteNode);
     clearAll().click(function() { saver.clear()});
 
     function clearAll() { return $("#" + dataName + "_clearAll") }
@@ -36,6 +37,13 @@ function Navigator($root, saver) {
     function addChild(event) {
         var $newChild = newListItem().find("li").clone();
         listOfChildren($selectedNode).append(treeify($newChild));
+        event.preventDefault();
+        event.stopPropagation();
+    }
+
+    function deleteNode(event) {
+        console.log("deleting");
+        $selectedNode.remove();
         event.preventDefault();
         event.stopPropagation();
     }

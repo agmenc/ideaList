@@ -121,6 +121,7 @@ describe('Navigator', function () {
         expect(saver.clear).toHaveBeenCalled();
     });
     it('Allows the user to delete leaf nodes', function () {
+        ideaList = new Navigator($hierarchicalList, saver);
         $list = $hierarchicalList;
 
         description("First grandchild node").click();
@@ -128,7 +129,7 @@ describe('Navigator', function () {
 
         deleteButton().click();
 
-        expect(exists(description("First grandchild node"))).toBeFalsy();
+        expect(doesNotExist("First grandchild node")).toBeTruthy();
     });
     it('Allows the user to delete node trees', function () {
         expect(true).toEqual(false);
@@ -162,17 +163,21 @@ describe('Navigator', function () {
         return $("a#" + dataName + "_clearAll").first();
     }
 
-    function description(text) {
-        var allSpans = $list.find("span");
-        console.log(allSpans);
-        console.log("exists(allSpans) = " + exists(allSpans));
-        debug.allSpans = allSpans;
+    function doesNotExist(text) {
+        return !exists(nodeDescription(text));
+    }
 
-        var found = allSpans.filter(function() {
-            return $(this).text() == text;
-        }).first();
+    function description(text) {
+        var found = nodeDescription(text);
         if (!exists(found)) throw 'Could not find item containing text "' + text + '"';
         return found;
+    }
+
+    function nodeDescription(text) {
+        return $list.find("span").filter(
+                function () {
+                    return $(this).text() == text;
+                }).first();
     }
 
     // TODO - CAS - 14/03/2012 - Just use option("Add") and option("Delete")
