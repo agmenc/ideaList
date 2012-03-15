@@ -1,6 +1,11 @@
 //
 
 function Navigator($root, saver) {
+
+    this.root = function() {
+        return $root;
+    };
+
     verifyInputs();
     var dataName = $root.attr("id");
     var $selectedNode;
@@ -42,8 +47,7 @@ function Navigator($root, saver) {
     }
 
     function deleteNode(event) {
-        console.log("deleting");
-        $selectedNode.remove();
+        $selectedNode.parent("li").remove();
         event.preventDefault();
         event.stopPropagation();
     }

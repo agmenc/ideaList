@@ -9,7 +9,7 @@ var HIERARCHICAL_LIST = '' +
         '<div id="hierarchicalList" class="ideaList">' +
         '   <ul>' +
         '       <li class="expanded">' +
-        '           <span>A pre-canned list</span>' +
+        '           <span>Hierarchical list</span>' +
         '           <ul>' +
         '               <li>' +
         '                   <span>First child node</span>' +
@@ -25,12 +25,9 @@ var HIERARCHICAL_LIST = '' +
         '   </ul>' +
         '</div>';
 
-var $preCannedList;
-var $hierarchicalList;
 var $notAList;
 var saver;
-var ideaList;
-var $list;
+var notNetscapeNavigator;
 
 describe('Navigator', function () {
 
@@ -38,17 +35,14 @@ describe('Navigator', function () {
         $("body").append(PRE_CANNED_LIST)
                 .append(NOT_A_LIST)
                 .append(HIERARCHICAL_LIST);
-        $preCannedList = $("#preCannedList");
-        $hierarchicalList = $("#hierarchicalList");
         $notAList = $("#notAList");
         saver = new Saver(new StorageProxy());
-        ideaList = new Navigator($preCannedList, saver);
+
+        notNetscapeNavigator = new Navigator($("#preCannedList").first(), saver);
     });
 
     afterEach(function () {
-        $preCannedList.remove();
-        $hierarchicalList.remove();
-        $notAList.remove();
+        notNetscapeNavigator.root().remove();
     });
 
     it('Fails noisily if an invalid root node is provided', function () {
@@ -57,11 +51,11 @@ describe('Navigator', function () {
     });
     it('Fails noisily if no saver is provided', function () {
         expect(function() {
-            new Navigator($preCannedList, null);
+            new Navigator($("#preCannedList"), null);
         }).toThrow("No saver provided");
     });
     it('Adds some hidden options and templates for creating new items', function () {
-        var $hiddenDiv = $preCannedList.find("div.hidden").first();
+        var $hiddenDiv = notNetscapeNavigator.root().find("div.hidden").first();
         var $optionsDiv = $hiddenDiv.find("#preCannedList_options");
         var $listTemplate = $hiddenDiv.find("#newChild ul");
 
@@ -69,30 +63,22 @@ describe('Navigator', function () {
         expect($listTemplate.html()).toContain('<li><span>New idea</span></li>');
     });
     it('Allows the user to select a node', function () {
-        $list = $preCannedList;
-
         description("A pre-canned list").click();
 
         expect(description("A pre-canned list").hasClass("selected")).toEqual(true);
     });
     it('Displays options to add or delete child nodes', function () {
-        $list = $preCannedList;
-
         description("A pre-canned list").click();
 
         expect(container("A pre-canned list").html()).toContain('<div id="preCannedList_options" class="options"><a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a></div>');
     });
     it('Adds a <ul></ul> containing a <li></li> when adding the first child node', function () {
-        $list = $preCannedList;
-
         description("A pre-canned list").click();
         addButton().click();
 
         expect(container("A pre-canned list").html()).toContain('<ul><li class="expanded"><span>New idea</span></li></ul>');
     });
     it('Only adds a <li></li> when adding subsequent child nodes', function () {
-        $list = $preCannedList;
-
         description("A pre-canned list").click();
         addButton().click();
         addButton().click();
@@ -101,7 +87,6 @@ describe('Navigator', function () {
     });
     it('Notices when a node has changed and asks the saver to save', function () {
         spyOn(saver, 'save');
-        $list = $preCannedList;
 
         description("A pre-canned list").click();
         addButton().click();
@@ -110,19 +95,17 @@ describe('Navigator', function () {
         description("New idea").html("some tweaked value");
 
         description("A pre-canned list").click();
-        expect(saver.save).toHaveBeenCalledWith($preCannedList);
+        expect(saver.save).toHaveBeenCalledWith(notNetscapeNavigator.root());
     });
     it('Allows the user to clear the tree', function () {
         spyOn(saver, 'clear');
-        $list = $preCannedList;
 
         clearAll().click();
 
         expect(saver.clear).toHaveBeenCalled();
     });
     it('Allows the user to delete leaf nodes', function () {
-        ideaList = new Navigator($hierarchicalList, saver);
-        $list = $hierarchicalList;
+        notNetscapeNavigator = new Navigator($("#hierarchicalList"), saver);
 
         description("First grandchild node").click();
         expect(exists(description("First grandchild node"))).toBeTruthy();
@@ -130,6 +113,9 @@ describe('Navigator', function () {
         deleteButton().click();
 
         expect(doesNotExist("First grandchild node")).toBeTruthy();
+    });
+    it('If a deleted leaf node was the last in the list, delete the <ul></ul> too', function () {
+        expect(true).toEqual(false);
     });
     it('Allows the user to delete node trees', function () {
         expect(true).toEqual(false);
@@ -152,19 +138,13 @@ describe('Navigator', function () {
         }).toThrow("No root node provided");
     }
 
-    function container(text) {
-        var parent = description(text).parent("li");
-        if (parent.length == 0) throw "There is no <li></li> parent of a span containing " + text;
-        return parent;
-    }
-
     function clearAll() {
-        var dataName = $list.attr("id");
+        var dataName = notNetscapeNavigator.root().attr("id");
         return $("a#" + dataName + "_clearAll").first();
     }
 
-    function doesNotExist(text) {
-        return !exists(nodeDescription(text));
+    function container(text) {
+        return description(text).parent("li");
     }
 
     function description(text) {
@@ -173,8 +153,12 @@ describe('Navigator', function () {
         return found;
     }
 
+    function doesNotExist(text) {
+        return !exists(nodeDescription(text));
+    }
+
     function nodeDescription(text) {
-        return $list.find("span").filter(
+        return notNetscapeNavigator.root().find("span").filter(
                 function () {
                     return $(this).text() == text;
                 }).first();
@@ -190,7 +174,7 @@ describe('Navigator', function () {
     }
 
     function options() {
-        var dataName = $list.attr("id");
+        var dataName = notNetscapeNavigator.root().attr("id");
         return $("#" + dataName + "_options").find("a");
     }
 });
