@@ -42,7 +42,8 @@ describe('Navigator', function () {
     });
 
     afterEach(function () {
-        notNetscapeNavigator.root().remove();
+        $("#preCannedList").remove();
+        $("#hierarchicalList").remove();
     });
 
     it('Fails noisily if an invalid root node is provided', function () {
@@ -106,19 +107,32 @@ describe('Navigator', function () {
     });
     it('Allows the user to delete leaf nodes', function () {
         notNetscapeNavigator = new Navigator($("#hierarchicalList"), saver);
-
         description("First grandchild node").click();
         expect(exists(description("First grandchild node"))).toBeTruthy();
 
         deleteButton().click();
 
-        expect(doesNotExist("First grandchild node")).toBeTruthy();
-    });
-    it('If a deleted leaf node was the last in the list, delete the <ul></ul> too', function () {
-        expect(true).toEqual(false);
+        expect(exists(description("First grandchild node"))).toBeFalsy();
     });
     it('Allows the user to delete node trees', function () {
-        expect(true).toEqual(false);
+        notNetscapeNavigator = new Navigator($("#hierarchicalList"), saver);
+        description("First child node").click();
+        expect(exists(description("First child node"))).toBeTruthy();
+        expect(exists(description("First grandchild node"))).toBeTruthy();
+
+        deleteButton().click();
+
+        expect(exists(description("First child node"))).toBeFalsy();
+        expect(exists(description("First grandchild node"))).toBeFalsy();
+    });
+    it('Deleting nodes fires a save', function () {
+        notNetscapeNavigator = new Navigator($("#hierarchicalList"), saver);
+        description("First grandchild node").click();
+        spyOn(saver, 'save');
+
+        deleteButton().click();
+
+        expect(saver.save).toHaveBeenCalledWith(notNetscapeNavigator.root());
     });
     // TODO - CAS - 14/03/2012 - now we can delete the Clear All feature
 //    it('Notices when a node has changed and asks the saver to save', function () {
@@ -148,20 +162,9 @@ describe('Navigator', function () {
     }
 
     function description(text) {
-        var found = nodeDescription(text);
-        if (!exists(found)) throw 'Could not find item containing text "' + text + '"';
-        return found;
-    }
-
-    function doesNotExist(text) {
-        return !exists(nodeDescription(text));
-    }
-
-    function nodeDescription(text) {
-        return notNetscapeNavigator.root().find("span").filter(
-                function () {
-                    return $(this).text() == text;
-                }).first();
+        return notNetscapeNavigator.root().find("span").filter(function () {
+            return $(this).text() == text;
+        }).first();
     }
 
     // TODO - CAS - 14/03/2012 - Just use option("Add") and option("Delete")

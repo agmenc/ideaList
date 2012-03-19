@@ -1,19 +1,11 @@
 //
 
 function Navigator($root, saver) {
-
-    this.root = function() {
-        return $root;
-    };
-
     verifyInputs();
     var dataName = $root.attr("id");
     var $selectedNode;
     var originalText = "";
-
-    $root.find("li").each(function () { treeify($(this)); });
-
-    $root.append('' +
+    var optionsAndTemplates = '' +
             '<div class="hidden">' +
             '   <div id="' + dataName + '_options" class="options"><a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a></div>' +
             '   <a id="' + dataName + '_clearAll" href="">Clear all</a>' +
@@ -22,14 +14,16 @@ function Navigator($root, saver) {
             '           <li><span>New idea</span></li>' +
             '       </ul>' +
             '   </div>' +
-            '</div>');
+            '</div>';
 
+    $root.find("li").each(function () { treeify($(this)); });
+    $root.append(optionsAndTemplates);
     $root.before(clearAll());
-
     options().find("#addChild").click(addChild);
     options().find("#deleteChild").click(deleteNode);
     clearAll().click(function() { saver.clear()});
 
+    this.root = function() { return $root; };
     function clearAll() { return $("#" + dataName + "_clearAll") }
     function options() { return $("#" + dataName + "_options") }
     function newListItem() { return $("#newChild") }
@@ -41,7 +35,7 @@ function Navigator($root, saver) {
 
     function addChild(event) {
         var $newChild = newListItem().find("li").clone();
-        listOfChildren($selectedNode).append(treeify($newChild));
+        listOfChildren($selectedNode).prepend(treeify($newChild));
         event.preventDefault();
         event.stopPropagation();
     }
@@ -50,6 +44,7 @@ function Navigator($root, saver) {
         $selectedNode.parent("li").remove();
         event.preventDefault();
         event.stopPropagation();
+        saver.save($root);
     }
 
     function listOfChildren($span) {
