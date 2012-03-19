@@ -75,11 +75,4 @@ describe('Saver', function () {
         var jsonTree = new Idea("Start Typing", [new Idea("A")]);
         expect(storage.save).toHaveBeenCalledWith("someId", strung(jsonTree));
     });
-    it('Delegates to the Storage proxy to clear storage', function () {
-        spyOn(storage, 'clear');
-
-        saver.clear($("#someIdeaList"));
-
-        expect(storage.clear).toHaveBeenCalled();
-    });
 });

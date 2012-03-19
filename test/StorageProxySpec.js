@@ -20,12 +20,4 @@ describe('StorageProxy', function () {
 
         expect(strung(inflated)).toEqual(strung(jsonTree));
     });
-    it('Clears all dutifully when asked', function () {
-        storage.save("someId", "monkeys");
-        expect(storage.retrieve("someId")).toEqual("monkeys");
-
-        storage.clear();
-
-        expect(storage.retrieve("someId")).toEqual(null);
-    });
 });

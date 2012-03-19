@@ -8,7 +8,6 @@ function Navigator($root, saver) {
     var optionsAndTemplates = '' +
             '<div class="hidden">' +
             '   <div id="' + dataName + '_options" class="options"><a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a></div>' +
-            '   <a id="' + dataName + '_clearAll" href="">Clear all</a>' +
             '   <div id="newChild">' +
             '       <ul>' +
             '           <li><span>New idea</span></li>' +
@@ -18,13 +17,10 @@ function Navigator($root, saver) {
 
     $root.find("li").each(function () { treeify($(this)); });
     $root.append(optionsAndTemplates);
-    $root.before(clearAll());
     options().find("#addChild").click(addChild);
     options().find("#deleteChild").click(deleteNode);
-    clearAll().click(function() { saver.clear()});
 
     this.root = function() { return $root; };
-    function clearAll() { return $("#" + dataName + "_clearAll") }
     function options() { return $("#" + dataName + "_options") }
     function newListItem() { return $("#newChild") }
 

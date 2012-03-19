@@ -98,13 +98,6 @@ describe('Navigator', function () {
         description("A pre-canned list").click();
         expect(saver.save).toHaveBeenCalledWith(notNetscapeNavigator.root());
     });
-    it('Allows the user to clear the tree', function () {
-        spyOn(saver, 'clear');
-
-        clearAll().click();
-
-        expect(saver.clear).toHaveBeenCalled();
-    });
     it('Allows the user to delete leaf nodes', function () {
         notNetscapeNavigator = new Navigator($("#hierarchicalList"), saver);
         description("First grandchild node").click();
@@ -134,6 +127,9 @@ describe('Navigator', function () {
 
         expect(saver.save).toHaveBeenCalledWith(notNetscapeNavigator.root());
     });
+//    it('If user deletes the root node, they get an annoying "Are you sure?" dialog', function () {
+//        expect(true).toBeFalsy();
+//    });
     // TODO - CAS - 14/03/2012 - now we can delete the Clear All feature
 //    it('Notices when a node has changed and asks the saver to save', function () {
 //        spyOn(storage, 'save');

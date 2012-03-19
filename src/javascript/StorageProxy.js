@@ -9,10 +9,6 @@ function StorageProxy() {
         return tryIf(storable(), function () {return localStorage.getItem(key)});
     };
 
-    this.clear = function (key) {
-        return tryIf(storable(), function () {return localStorage.clear()});
-    };
-
     function tryIf(check, func) {
         try {
             if (check) return func();
