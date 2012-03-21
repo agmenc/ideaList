@@ -127,13 +127,37 @@ describe('Navigator', function () {
 
         expect(saver.save).toHaveBeenCalledWith(notNetscapeNavigator.root());
     });
-//    it('If user deletes the root node, they get an annoying "Are you sure?" dialog', function () {
-//        expect(true).toBeFalsy();
-//    });
-    // TODO - CAS - 14/03/2012 - now we can delete the Clear All feature
+    it('If user deletes the root node, they get an annoying "Are you sure?" dialog', function () {
+        deleteRootNode(true);
+
+        expect(window.confirm).toHaveBeenCalledWith("This will delete the entire tree. Is this your intention?");
+    });
+    it('If user deletes the root node, it really does all disappear', function () {
+        deleteRootNode(true);
+
+        expect(exists(description("Hierarchical list"))).toBeFalsy();
+        expect(exists(description("First child node"))).toBeFalsy();
+    });
+    it('The delete dialog allows the user to back down from a total delete', function () {
+        deleteRootNode(false);
+
+        expect(exists(description("First child node"))).toBeTruthy();
+    });
+    it('If user deletes the root node, they have to start again', function () {
+        deleteRootNode(true);
+
+        expect(tree().text()).toEqual("Reload the page to build a new tree");
+    });
+    it('If user deletes the root node, the tree is wiped from storage', function () {
+        spyOn(saver, 'save');
+
+        deleteRootNode(true);
+
+        expect(saver.save).toHaveBeenCalledWith(notNetscapeNavigator.root());
+    });
 //    it('Notices when a node has changed and asks the saver to save', function () {
-//        spyOn(storage, 'save');
-//        var theList = given(Idea("root", [Idea("childOne"), Idea("childTwo")]));
+//        spyOn(storage, 'save'); // ==> just assume this (i.e. always spy on this: it's a stub)
+//        given(Idea("root", [Idea("childOne"), Idea("childTwo")]));
 //
 //        select("childTwo");
 //        change("childTwo", "child2");
@@ -163,6 +187,10 @@ describe('Navigator', function () {
         }).first();
     }
 
+    function tree() {
+        return notNetscapeNavigator.root();
+    }
+
     // TODO - CAS - 14/03/2012 - Just use option("Add") and option("Delete")
     function addButton() {
         return options().first();
@@ -175,5 +203,12 @@ describe('Navigator', function () {
     function options() {
         var dataName = notNetscapeNavigator.root().attr("id");
         return $("#" + dataName + "_options").find("a");
+    }
+
+    function deleteRootNode(allowKill) {
+        notNetscapeNavigator = new Navigator($("#hierarchicalList"), saver);
+        spyOn(window, 'confirm').andReturn(allowKill);
+        description("Hierarchical list").click();
+        deleteButton().click();
     }
 });

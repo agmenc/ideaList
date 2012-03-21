@@ -55,4 +55,28 @@ describe('Builder', function () {
                 '<ul><li><span>trees</span><ul><li><span>bananas</span></li><li><span>apples</span><ul><li><span>cider</span></li></ul></li><li><span>other fruit</span></li></ul></li></ul>'
         );
     });
+    it("Screwed up JSON doesn't stop the page from loading", function () {
+        spyOn(storage, 'retrieve').andReturn(''
+                + '{"description":"Root", "children":['
+                + '{'
+                + '    "description":"Sib1",'
+                + '        "children":[]'
+                + '},'
+                + '{'
+                + '    "description":"",'
+                + '        "children":[]'
+                + '},'
+                + '{'
+                + '    "description":"Sib3",'
+                + '        "children":[]'
+                + '}'
+                + ']}');
+        $emptyDiv.html("");
+
+        listBuilder = new Builder($("#emptyDiv"), storage);
+
+        expect($emptyDiv.html()).toContain(
+                '<ul><li><span>Root</span><ul><li><span>Sib1</span></li><li><span></span></li><li><span>Sib3</span></li></ul></li></ul>'
+        );
+    });
 });

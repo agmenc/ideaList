@@ -6,7 +6,9 @@ function StorageProxy() {
     };
 
     this.retrieve = function (key) {
-        return tryIf(storable(), function () {return localStorage.getItem(key)});
+        return tryIf(storable(), function () {
+            return localStorage.getItem(key);
+        });
     };
 
     function tryIf(check, func) {

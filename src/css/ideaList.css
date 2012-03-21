@@ -36,6 +36,10 @@ span.hover {
     background-color: #f5f5dc;
 }
 
+[contenteditable]:hover {
+    outline: 1px dotted #ccc;
+}
+
 .options {
     display: inline-block;
     margin-left: 20px;

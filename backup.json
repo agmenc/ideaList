@@ -1,0 +1,60 @@
+{"description":"IdeaList TODO", "children":[
+    {
+        "description":"Allow user to re-order nodes within a sub-list",
+        "children":[]
+    },
+    {
+        "description":"Allow user to drag node to other parents",
+        "children":[]
+    },
+    {
+        "description":"Bugs",
+        "children":[
+            {
+                "description":"Stop the options buttons disappearing when you delete a node",
+                "children":[]
+            },
+            {
+                "description":"Make expand/contract work as expected (use a fucking icon)",
+                "children":[]
+            },
+            {
+                "description":"Make content editable with only one click",
+                "children":[]
+            }
+        ]
+    },
+    {
+        "description":"Add undo support, by remembering the previous saved JSON",
+        "children":[]
+    },
+    {
+        "description":"",
+        "children":[]
+    },
+    {
+        "description":"Show the hover. Use JQuery hover() ",
+        "children":[]
+    },
+    {
+        "description":"Allow arrow keys to change selected node",
+        "children":[
+            {
+                "description":"Use focus to navigate (as focus is gained on a node, select it, and that will deselect the previous one)",
+                "children":[]
+            },
+            {
+                "description":"Tab to move forward and back",
+                "children":[]
+            },
+            {
+                "description":"Up/down to navigate as-is",
+                "children":[]
+            },
+            {
+                "description":"Left/right to expand/collapse nodes",
+                "children":[]
+            }
+        ]
+    }
+]}

@@ -37,10 +37,20 @@ function Navigator($root, saver) {
     }
 
     function deleteNode(event) {
-        $selectedNode.parent("li").remove();
+        if (isRoot($selectedNode)) {
+            var goAhead = confirm("This will delete the entire tree. Is this your intention?");
+            if (goAhead) $root.html("Reload the page to build a new tree");
+        } else {
+            $selectedNode.parent("li").remove();
+        }
+
         event.preventDefault();
         event.stopPropagation();
         saver.save($root);
+    }
+
+    function isRoot($span) {
+        return $root.find("ul li span").first().text() == $span.text();
     }
 
     function listOfChildren($span) {
@@ -62,7 +72,6 @@ function Navigator($root, saver) {
     function select($target) {
         if ($selectedNode) {
             $selectedNode.removeClass("selected");
-            asPlain($selectedNode).contentEditable = "true";
             saveIfChanged($selectedNode, originalText);
         }
 
