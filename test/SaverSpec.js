@@ -55,6 +55,7 @@ describe('Saver', function () {
 
     afterEach(function () {
         $("#someIdeaList").remove();
+        $("#someId").remove();
     });
 
     it('Traverses the HTML to construct JSON to parse and save when saving locally', function () {

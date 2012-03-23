@@ -20,7 +20,7 @@ describe('Builder', function () {
     });
 
     it('Given an empty div, turns it into an empty ideaList', function () {
-        expect($emptyDiv.html()).toContain('<ul><li><span>Start Typing</span></li></ul>');
+        expect($emptyDiv.html()).toContain(child());
     });
     it('Fails noisily if you try to bind an ideaList to a root that already contains one', function () {
         $("body").append('<div id="divWithChildren" class="ideaList"><span>You are a monkey</span></div>');
@@ -43,7 +43,7 @@ describe('Builder', function () {
 
         listBuilder = new Builder($("#emptyDiv"), storage);
 
-        expect($emptyDiv.html()).toContain('<ul><li><span>monkeys</span></li></ul>');
+        expect($emptyDiv.html()).toContain(child("monkeys"));
     });
     it('Can consume the appropriate JSON object to form a tree', function () {
         spyOn(storage, 'retrieve').andReturn(strung(new Idea("trees", [new Idea("bananas"), new Idea("apples", [new Idea("cider")]), new Idea("other fruit")])));
@@ -51,11 +51,9 @@ describe('Builder', function () {
 
         listBuilder = new Builder($("#emptyDiv"), storage);
 
-        expect($emptyDiv.html()).toContain(
-                '<ul><li><span>trees</span><ul><li><span>bananas</span></li><li><span>apples</span><ul><li><span>cider</span></li></ul></li><li><span>other fruit</span></li></ul></li></ul>'
-        );
+        expect($emptyDiv.html()).toContain(child("trees", [child("bananas"), child("apples", [child("cider")]), child("other fruit")]));
     });
-    it("Screwed up JSON doesn't stop the page from loading", function () {
+    it("An empty description doesn't stop the page from loading", function () {
         spyOn(storage, 'retrieve').andReturn(''
                 + '{"description":"Root", "children":['
                 + '{'
@@ -75,8 +73,17 @@ describe('Builder', function () {
 
         listBuilder = new Builder($("#emptyDiv"), storage);
 
-        expect($emptyDiv.html()).toContain(
-                '<ul><li><span>Root</span><ul><li><span>Sib1</span></li><li><span></span></li><li><span>Sib3</span></li></ul></li></ul>'
-        );
+        expect($emptyDiv.html()).toContain(child("Root", [child("Sib1"), child(""), child("Sib3")]));
     });
+    function child(description, children) {
+        if (!description && "" != description) description = "New idea";
+        var template = Navigator.newChild.replace("New idea", description);
+        if (children) {
+            var kids = "<ul>";
+            $.each(children, function(index, child) { kids += child; });
+            kids += "</ul>";
+            template = template.replace("</span></li>", '</span>' + kids + '</li>');
+        }
+        return template;
+    }
 });

@@ -61,7 +61,7 @@ describe('Navigator', function () {
         var $listTemplate = $hiddenDiv.find("#newChild ul");
 
         expect($optionsDiv.html()).toEqual('<a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a>');
-        expect($listTemplate.html()).toContain('<li><span>New idea</span></li>');
+        expect($listTemplate.html()).toContain(Navigator.newChild);
     });
     it('Allows the user to select a node', function () {
         description("A pre-canned list").click();
@@ -75,16 +75,18 @@ describe('Navigator', function () {
     });
     it('Adds a <ul></ul> containing a <li></li> when adding the first child node', function () {
         description("A pre-canned list").click();
+
         addButton().click();
 
-        expect(container("A pre-canned list").html()).toContain('<ul><li class="expanded"><span>New idea</span></li></ul>');
+        expect(container("A pre-canned list").html()).toContain('<ul>' + Navigator.newChild + '</ul>');
     });
-    it('Only adds a <li></li> when adding subsequent child nodes', function () {
+    it('Adds a <li></li> but not a <ul></ul> when adding subsequent child nodes', function () {
         description("A pre-canned list").click();
         addButton().click();
+
         addButton().click();
 
-        expect(container("A pre-canned list").html()).toContain('<ul><li class="expanded"><span>New idea</span></li><li class="expanded"><span>New idea</span></li></ul>');
+        expect(container("A pre-canned list").html()).toContain('<ul>' + Navigator.newChild + Navigator.newChild + '</ul>');
     });
     it('Notices when a node has changed and asks the saver to save', function () {
         spyOn(saver, 'save');

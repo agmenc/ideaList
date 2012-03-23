@@ -10,7 +10,7 @@ function Navigator($root, saver) {
             '   <div id="' + dataName + '_options" class="options"><a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a></div>' +
             '   <div id="newChild">' +
             '       <ul>' +
-            '           <li><span>New idea</span></li>' +
+            '           ' + Navigator.newChild +
             '       </ul>' +
             '   </div>' +
             '</div>';
@@ -62,10 +62,14 @@ function Navigator($root, saver) {
     function treeify($listItem) {
         $listItem.click(function (event) {
             select($listItem.find("span:first"));
+            event.stopPropagation();
+        });
+        $listItem.find("div:first").click(function(event) {
             expandContract($listItem);
             event.stopPropagation();
         });
         $listItem.addClass("expanded");
+        asPlain($listItem.find("span:first")).contentEditable = "true";
         return $listItem;
     }
 
@@ -79,7 +83,6 @@ function Navigator($root, saver) {
         $target.addClass("selected");
         $target.after(options());
         $selectedNode = $target;
-        asPlain($target).contentEditable = "true";
     }
 
     function saveIfChanged($node, original) {
@@ -92,3 +95,5 @@ function Navigator($root, saver) {
         $elem.children("ul").toggle();
     }
 }
+
+Navigator.newChild = '<li class="expanded"><div class="toggle"></div><span contenteditable="true">New idea</span></li>';

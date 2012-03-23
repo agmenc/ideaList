@@ -6,7 +6,7 @@ function Builder($root, storage) {
     var data = startingData(dataName);
     var insertionPoint = "~%~";
     var exitPoint = "%~%";
-    var itemTemplate = '<li><span>d</span>' + insertionPoint + '</li>';
+    var itemTemplate = Navigator.newChild.replace("</span></li>", '</span>' + insertionPoint + '</li>');
 
     $root.append(traverseAndBuild([data], '<ul>' + insertionPoint + '</ul>').replace(insertionPoint, ""));
 
@@ -17,12 +17,12 @@ function Builder($root, storage) {
     function startingData(storageName) {
         var locallySaved = storage.retrieve(storageName);
         var inflated = Idea.inflateFrom(locallySaved);
-        return locallySaved ? inflated : new Idea("Start Typing");
+        return locallySaved ? inflated : new Idea("New idea");
     }
 
     function traverseAndBuild(nodes, accumulator) {
         $.each(nodes, function (index, node) {
-            accumulator = accumulator.replace(insertionPoint, itemTemplate.replace("d", node.description));
+            accumulator = accumulator.replace(insertionPoint, itemTemplate.replace("New idea", node.description));
             if (node.hasChildren && node.hasChildren()) {
                 accumulator = traverseAndBuild(node.children(), accumulator.replace(insertionPoint, '<ul>' + insertionPoint + '</ul>' + exitPoint));
                 accumulator = accumulator.replace(insertionPoint, "");
