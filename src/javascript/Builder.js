@@ -15,9 +15,11 @@ function Builder($root, storage) {
     }
 
     function startingData(storageName) {
-        var locallySaved = storage.retrieve(storageName);
-        var inflated = Idea.inflateFrom(locallySaved);
-        return locallySaved ? inflated : new Idea("New idea");
+        if (storage.holds(storageName)) {
+            var inflated = Idea.inflateFrom(storage.retrieve(storageName));
+            if (inflated && inflated.description) return inflated;
+        }
+        return new Idea("New idea");
     }
 
     function traverseAndBuild(nodes, accumulator) {

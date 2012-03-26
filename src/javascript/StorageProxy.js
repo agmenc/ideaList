@@ -11,6 +11,16 @@ function StorageProxy() {
         });
     };
 
+    this.holds = function(key) {
+        return tryIf(storable(), function () {
+            return notEmpty(localStorage[key]);
+        });
+    };
+
+    function notEmpty(someString) {
+        return someString && someString != "";
+    }
+
     function tryIf(check, func) {
         try {
             if (check) return func();

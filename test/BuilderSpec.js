@@ -31,13 +31,14 @@ describe('Builder', function () {
     });
     it('Uses the div id as key to find saved JSON data to populate the tree', function () {
         $emptyDiv.html("");
-        spyOn(storage, 'retrieve').andReturn(null);
+        spyOn(storage, 'holds').andReturn(false);
 
         listBuilder = new Builder($emptyDiv, storage);
 
-        expect(storage.retrieve).toHaveBeenCalledWith("emptyDiv");
+        expect(storage.holds).toHaveBeenCalledWith("emptyDiv");
     });
     it('Can consume the appropriate JSON object to form the root node of a tree', function () {
+        spyOn(storage, 'holds').andReturn(true);
         spyOn(storage, 'retrieve').andReturn('{"description": "monkeys", "children": []}');
         $emptyDiv.html("");
 
@@ -46,6 +47,7 @@ describe('Builder', function () {
         expect($emptyDiv.html()).toContain(child("monkeys"));
     });
     it('Can consume the appropriate JSON object to form a tree', function () {
+        spyOn(storage, 'holds').andReturn(true);
         spyOn(storage, 'retrieve').andReturn(strung(new Idea("trees", [new Idea("bananas"), new Idea("apples", [new Idea("cider")]), new Idea("other fruit")])));
         $emptyDiv.html("");
 
@@ -54,6 +56,7 @@ describe('Builder', function () {
         expect($emptyDiv.html()).toContain(child("trees", [child("bananas"), child("apples", [child("cider")]), child("other fruit")]));
     });
     it("An empty description doesn't stop the page from loading", function () {
+        spyOn(storage, 'holds').andReturn(true);
         spyOn(storage, 'retrieve').andReturn(''
                 + '{"description":"Root", "children":['
                 + '{'
@@ -74,6 +77,22 @@ describe('Builder', function () {
         listBuilder = new Builder($("#emptyDiv"), storage);
 
         expect($emptyDiv.html()).toContain(child("Root", [child("Sib1"), child(""), child("Sib3")]));
+    });
+    it('Adds a new child to the tree when the storage is an empty String', function () {
+        spyOn(storage, 'retrieve').andReturn("");
+        $emptyDiv.html("");
+
+        listBuilder = new Builder($("#emptyDiv"), storage);
+
+        expect($emptyDiv.html()).toEqual("<ul>" + Navigator.newChild + "</ul>");
+    });
+    it('Adds a new child to the tree when the storage is an invalid Idea', function () {
+        spyOn(storage, 'retrieve').andReturn('{"description":"","children":[]}');
+        $emptyDiv.html("");
+
+        listBuilder = new Builder($("#emptyDiv"), storage);
+
+        expect($emptyDiv.html()).toEqual("<ul>" + Navigator.newChild + "</ul>");
     });
     function child(description, children) {
         if (!description && "" != description) description = "New idea";
