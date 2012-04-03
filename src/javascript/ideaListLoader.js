@@ -5,6 +5,7 @@ jQuery(document).ready(function () {
     $("div.ideaList").each(function () {
         new Builder($(this), storage);
         new Navigator($(this), new Saver(storage));
+        new ShiftyList($(this).children("ul"));
     })
 });
 

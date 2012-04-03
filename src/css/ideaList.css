@@ -18,15 +18,33 @@ li.contracted div.toggle {
     background-image: url("../images/more.png");
 }
 
-span.selected {
-    background-color: #c4e2fa;
-    border: thin solid black;
-    border-radius: 5px;
+span {
     padding: 2px;
+}
+
+span.selected {
+    background-color: #d9d9d9;
 }
 
 [contenteditable]:hover {
     outline: 1px dotted #949494;
+}
+
+[draggable] {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.drag {
+    background-color: #d9d9d9;
+    opacity: 0.6;
+}
+
+.placeholder {
+    width: 200px;
+    border-top: thin solid black;
 }
 
 .toggle {
