@@ -7,7 +7,7 @@ function Navigator($root, saver) {
     var originalText = "";
     var optionsAndTemplates = '' +
             '<div class="hidden">' +
-            '   <div id="' + dataName + '_options" class="options"><a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a></div>' +
+            '   <div id="' + dataName + '_options" class="options">' + Navigator.options + '</div>' +
             '   <div id="newChild">' +
             '       <ul>' +
             '           ' + Navigator.newChild +
@@ -97,3 +97,4 @@ function Navigator($root, saver) {
 }
 
 Navigator.newChild = '<li class="expanded"><div class="toggle"></div><span contenteditable="true">New idea</span></li>';
+Navigator.options = '<a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a> | <a id="saveTree" href="">save backup</a>';

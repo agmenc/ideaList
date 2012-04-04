@@ -60,7 +60,7 @@ describe('Navigator', function () {
         var $optionsDiv = $hiddenDiv.find("#preCannedList_options");
         var $listTemplate = $hiddenDiv.find("#newChild ul");
 
-        expect($optionsDiv.html()).toEqual('<a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a>');
+        expect($optionsDiv.html()).toEqual(Navigator.options);
         expect($listTemplate.html()).toContain(Navigator.newChild);
     });
     it('Allows the user to select a node', function () {
@@ -71,7 +71,7 @@ describe('Navigator', function () {
     it('Displays options to add or delete child nodes', function () {
         description("A pre-canned list").click();
 
-        expect(container("A pre-canned list").html()).toContain('<div id="preCannedList_options" class="options"><a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a></div>');
+        expect(container("A pre-canned list").html()).toContain('<div id="preCannedList_options" class="options">' + Navigator.options + '</div>');
     });
     it('Adds a <ul></ul> containing a <li></li> when adding the first child node', function () {
         description("A pre-canned list").click();
@@ -157,6 +157,23 @@ describe('Navigator', function () {
 
         expect(saver.save).toHaveBeenCalledWith(notNetscapeNavigator.root());
     });
+    it('Asks the saver to extract backup text', function () {
+        notNetscapeNavigator = new Navigator($("#hierarchicalList"), saver);
+        spyOn(saver, 'exportTree');
+
+        saveButton().click();
+
+        expect(saver.exportTree).toHaveBeenCalledWith(notNetscapeNavigator.root());
+    });
+    it('Points an iFrame at exported JSON, so that users can save it', function () {
+        notNetscapeNavigator = new Navigator($("#hierarchicalList"), saver);
+        spyOn(saver, 'export').andReturn('{"description": "monkeys", "children": []}');
+
+        saveButton().click();
+
+        // expect iFrame src toEqual('{"description": "monkeys", "children": []}');
+        expect(false).toEqual(true);
+    });
 //    it('Notices when a node has changed and asks the saver to save', function () {
 //        spyOn(storage, 'save'); // ==> just assume this (i.e. always spy on this: it's a stub)
 //        given(Idea("root", [Idea("childOne"), Idea("childTwo")]));
@@ -195,16 +212,22 @@ describe('Navigator', function () {
 
     // TODO - CAS - 14/03/2012 - Just use option("Add") and option("Delete")
     function addButton() {
-        return options().first();
+        return options("add");
     }
 
     function deleteButton() {
-        return options().last();
+        return options("delete");
     }
 
-    function options() {
+    function backupButton() {
+        return options("save backup");
+    }
+
+    function options(text) {
         var dataName = notNetscapeNavigator.root().attr("id");
-        return $("#" + dataName + "_options").find("a");
+        return $("#" + dataName + "_options").find("a").filter(function() {
+            return $(this).text() == text;
+        });
     }
 
     function deleteRootNode(allowKill) {

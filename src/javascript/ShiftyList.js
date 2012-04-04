@@ -18,7 +18,7 @@ function ShiftyList($rootNode) {
 
     function ancestorDescendant(elem1, elem2) { return exists(elem1.find(elem2)); }
 
-    // Consider creating a separate DnD class
+    // Consider creating a separate DnD class, or new Drag() and new Drop();
     var $source;
 
     function makeShifty($listItem) {
