@@ -1,12 +1,19 @@
 //
 
 function Saver(storage) {
-    this.save = function ($rootNode) {
-        var dataName = $rootNode.attr("id");
+    function extractData($rootNode) {
         var $rootListItem = $rootNode.find("ul li").first();
         var jsonTree = toIdea($rootListItem);
         accumulateChildren($rootListItem, jsonTree);
-        storage.save(dataName, strung(jsonTree))
+        return strung(jsonTree);
+    }
+
+    this.save = function ($rootNode) {
+        storage.save($rootNode.attr("id"), extractData($rootNode))
+    };
+
+    this.exportTree = function($rootNode) {
+        return extractData($rootNode);
     };
 
     function accumulateChildren($listItem, jsonNode) {

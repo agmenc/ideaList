@@ -39,6 +39,9 @@ describe('Navigator', function () {
         saver = new Saver(new StorageProxy());
 
         notNetscapeNavigator = new Navigator($("#preCannedList").first(), saver);
+        spyOn(window, 'open');
+        spyOn(saver, 'save');
+        spyOn(saver, 'exportTree').andReturn('{"description": "monkeys", "children": []}');
     });
 
     afterEach(function () {
@@ -76,23 +79,21 @@ describe('Navigator', function () {
     it('Adds a <ul></ul> containing a <li></li> when adding the first child node', function () {
         description("A pre-canned list").click();
 
-        addButton().click();
+        option("add").click();
 
         expect(container("A pre-canned list").html()).toContain('<ul>' + Navigator.newChild + '</ul>');
     });
     it('Adds a <li></li> but not a <ul></ul> when adding subsequent child nodes', function () {
         description("A pre-canned list").click();
-        addButton().click();
 
-        addButton().click();
+        option("add").click();
+        option("add").click();
 
         expect(container("A pre-canned list").html()).toContain('<ul>' + Navigator.newChild + Navigator.newChild + '</ul>');
     });
     it('Notices when a node has changed and asks the saver to save', function () {
-        spyOn(saver, 'save');
-
         description("A pre-canned list").click();
-        addButton().click();
+        option("add").click();
 
         description("New idea").click();
         description("New idea").html("some tweaked value");
@@ -105,7 +106,7 @@ describe('Navigator', function () {
         description("First grandchild node").click();
         expect(exists(description("First grandchild node"))).toBeTruthy();
 
-        deleteButton().click();
+        option("delete").click();
 
         expect(exists(description("First grandchild node"))).toBeFalsy();
     });
@@ -115,7 +116,7 @@ describe('Navigator', function () {
         expect(exists(description("First child node"))).toBeTruthy();
         expect(exists(description("First grandchild node"))).toBeTruthy();
 
-        deleteButton().click();
+        option("delete").click();
 
         expect(exists(description("First child node"))).toBeFalsy();
         expect(exists(description("First grandchild node"))).toBeFalsy();
@@ -123,9 +124,8 @@ describe('Navigator', function () {
     it('Deleting nodes fires a save', function () {
         notNetscapeNavigator = new Navigator($("#hierarchicalList"), saver);
         description("First grandchild node").click();
-        spyOn(saver, 'save');
 
-        deleteButton().click();
+        option("delete").click();
 
         expect(saver.save).toHaveBeenCalledWith(notNetscapeNavigator.root());
     });
@@ -151,49 +151,29 @@ describe('Navigator', function () {
         expect(tree().text()).toEqual("Reload the page to build a new tree");
     });
     it('If user deletes the root node, the tree is wiped from storage', function () {
-        spyOn(saver, 'save');
-
         deleteRootNode(true);
 
         expect(saver.save).toHaveBeenCalledWith(notNetscapeNavigator.root());
     });
     it('Asks the saver to extract backup text', function () {
         notNetscapeNavigator = new Navigator($("#hierarchicalList"), saver);
-        spyOn(saver, 'exportTree');
 
-        saveButton().click();
+        option("save backup").click();
 
         expect(saver.exportTree).toHaveBeenCalledWith(notNetscapeNavigator.root());
     });
     it('Points an iFrame at exported JSON, so that users can save it', function () {
         notNetscapeNavigator = new Navigator($("#hierarchicalList"), saver);
-        spyOn(saver, 'export').andReturn('{"description": "monkeys", "children": []}');
 
-        saveButton().click();
+        option("save backup").click();
 
-        // expect iFrame src toEqual('{"description": "monkeys", "children": []}');
-        expect(false).toEqual(true);
+        expect(window.open).toHaveBeenCalled();
     });
-//    it('Notices when a node has changed and asks the saver to save', function () {
-//        spyOn(storage, 'save'); // ==> just assume this (i.e. always spy on this: it's a stub)
-//        given(Idea("root", [Idea("childOne"), Idea("childTwo")]));
-//
-//        select("childTwo");
-//        change("childTwo", "child2");
-//        select("childOne");
-//
-//        expect(storage.save).toHaveBeenCalledWith(Idea("root", [Idea("childOne"), Idea("child2")]));
-//    });
 
     function assertRootIsInvalid(someRoot) {
         expect(function() {
             new Navigator(someRoot, new Saver(new StorageProxy()));
         }).toThrow("No root node provided");
-    }
-
-    function clearAll() {
-        var dataName = notNetscapeNavigator.root().attr("id");
-        return $("a#" + dataName + "_clearAll").first();
     }
 
     function container(text) {
@@ -210,20 +190,7 @@ describe('Navigator', function () {
         return notNetscapeNavigator.root();
     }
 
-    // TODO - CAS - 14/03/2012 - Just use option("Add") and option("Delete")
-    function addButton() {
-        return options("add");
-    }
-
-    function deleteButton() {
-        return options("delete");
-    }
-
-    function backupButton() {
-        return options("save backup");
-    }
-
-    function options(text) {
+    function option(text) {
         var dataName = notNetscapeNavigator.root().attr("id");
         return $("#" + dataName + "_options").find("a").filter(function() {
             return $(this).text() == text;
@@ -234,6 +201,6 @@ describe('Navigator', function () {
         notNetscapeNavigator = new Navigator($("#hierarchicalList"), saver);
         spyOn(window, 'confirm').andReturn(allowKill);
         description("Hierarchical list").click();
-        deleteButton().click();
+        option("delete").click();
     }
 });

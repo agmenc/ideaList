@@ -2,9 +2,11 @@
 
 var saver;
 var storage;
+var simpleExampleJson = new Idea("Root node", [new Idea("Child 1"), new Idea("Child 2", [new Idea("Grandchild 1")]), new Idea("Child 3")]);
+var realExampleJson = new Idea("Start Typing", [new Idea("A")]);
 
 var SIMPLES = '' +
-        '<div id="someIdeaList" class="ideaList">' +
+        '<div id="simpleExample" class="ideaList">' +
         '   <ul>' +
         '       <li><span>Root node</span>' +
         '           <ul>' +
@@ -21,14 +23,14 @@ var SIMPLES = '' +
         '</div>';
 
 var REAL_EXAMPLE = '' +
-        '<div id="someId" class="ideaList">' +
+        '<div id="realExample" class="ideaList">' +
         '    <ul>' +
         '        <li class="expanded">' +
         '            <span class="" contenteditable="true">Start Typing</span>' +
         '            <ul style="display: block;">' +
         '                <li class="contracted">' +
         '                    <span class="selected" contenteditable="true">A</span>' +
-        '                    <div id="someId_options" class="options">' +
+        '                    <div id="realExample_options" class="options">' +
         '                        <a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a>' +
         '                    </div>' +
         '                </li>' +
@@ -51,29 +53,30 @@ describe('Saver', function () {
     beforeEach(function () {
         storage = new StorageProxy();
         saver = new Saver(storage);
+        spyOn(storage, 'save');
+        $("body").append(SIMPLES);
+        $("body").append(REAL_EXAMPLE);
     });
 
     afterEach(function () {
-        $("#someIdeaList").remove();
-        $("#someId").remove();
+        $("#simpleExample").remove();
+        $("#realExample").remove();
     });
 
     it('Traverses the HTML to construct JSON to parse and save when saving locally', function () {
-        $("body").append(SIMPLES);
-        spyOn(storage, 'save');
+        saver.save($("#simpleExample"));
 
-        saver.save($("#someIdeaList"));
-
-        var jsonTree = new Idea("Root node", [new Idea("Child 1"), new Idea("Child 2", [new Idea("Grandchild 1")]), new Idea("Child 3")]);
-        expect(storage.save).toHaveBeenCalledWith("someIdeaList", strung(jsonTree));
+        expect(storage.save).toHaveBeenCalledWith("simpleExample", strung(simpleExampleJson));
     });
+
     it('Traverses different HTML too', function () {
-        $("body").append(REAL_EXAMPLE);
-        spyOn(storage, 'save');
+        saver.save($("#realExample"));
 
-        saver.save($("#someId"));
+        expect(storage.save).toHaveBeenCalledWith("realExample", strung(realExampleJson));
+    });
 
-        var jsonTree = new Idea("Start Typing", [new Idea("A")]);
-        expect(storage.save).toHaveBeenCalledWith("someId", strung(jsonTree));
+    it('Returns the json to the caller for export', function () {
+        expect(saver.exportTree($("#simpleExample"))).toEqual(strung(simpleExampleJson));
+        expect(saver.exportTree($("#realExample"))).toEqual(strung(realExampleJson));
     });
 });

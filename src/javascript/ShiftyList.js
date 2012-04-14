@@ -1,6 +1,9 @@
+//
+
 function original($e) {
     return $e.originalEvent;
 }
+
 function ShiftyList($rootNode) {
     var self = this;
 

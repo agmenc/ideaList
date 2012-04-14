@@ -19,8 +19,9 @@ function Navigator($root, saver) {
     $root.append(optionsAndTemplates);
     options().find("#addChild").click(addChild);
     options().find("#deleteChild").click(deleteNode);
+    options().find("#saveBackup").click(saveBackup);
 
-    this.root = function() { return $root; };
+    this.root = function () { return $root; };
     function options() { return $("#" + dataName + "_options") }
     function newListItem() { return $("#newChild") }
 
@@ -33,7 +34,6 @@ function Navigator($root, saver) {
         var $newChild = newListItem().find("li").clone();
         listOfChildren($selectedNode).prepend(treeify($newChild));
         event.preventDefault();
-        event.stopPropagation();
     }
 
     function deleteNode(event) {
@@ -45,8 +45,14 @@ function Navigator($root, saver) {
         }
 
         event.preventDefault();
-        event.stopPropagation();
         saver.save($root);
+    }
+
+    function saveBackup(event) {
+        var treeJson = saver.exportTree($root);
+        var uriContent = "data:application/octet-stream," + encodeURIComponent(treeJson);
+        window.open(uriContent, 'Save Backup');
+        event.preventDefault();
     }
 
     function isRoot($span) {
@@ -64,7 +70,7 @@ function Navigator($root, saver) {
             select($listItem.find("span:first"));
             event.stopPropagation();
         });
-        $listItem.find("div:first").click(function(event) {
+        $listItem.find("div:first").click(function (event) {
             expandContract($listItem);
             event.stopPropagation();
         });
@@ -97,4 +103,4 @@ function Navigator($root, saver) {
 }
 
 Navigator.newChild = '<li class="expanded"><div class="toggle"></div><span contenteditable="true">New idea</span></li>';
-Navigator.options = '<a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a> | <a id="saveTree" href="">save backup</a>';
+Navigator.options = '<a id="addChild" href="">add</a> | <a id="deleteChild" href="">delete</a> | <a id="saveBackup" href="">save backup</a>';
