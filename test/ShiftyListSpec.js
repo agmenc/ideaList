@@ -1,26 +1,26 @@
 //
 
-var shiftyList;
-var A_LIST = '' +
-        '<ul id="aList" class="shiftyList">' +
-        '    <li><span>Parent1</span></li>' +
-        '    <li>' +
-        '        <span>Parent2</span>' +
-        '        <ul>' +
-        '            <li><span>ChildA</span></li>' +
-        '            <li>' +
-        '                <span>ChildB</span>' +
-        '                <ul>' +
-        '                    <li><span>GrandChildA</span></li>' +
-        '                    <li><span>GrandChildB</span></li>' +
-        '                </ul>' +
-        '            </li>' +
-        '        </ul>' +
-        '    </li>' +
-        '    <li><span>Parent3</span></li>' +
-        '</ul>';
-
 describe('ShiftyList', function () {
+
+    var shiftyList;
+    var A_LIST = '' +
+            '<ul id="aList" class="shiftyList">' +
+            '    <li><span>Parent1</span></li>' +
+            '    <li>' +
+            '        <span>Parent2</span>' +
+            '        <ul>' +
+            '            <li><span>ChildA</span></li>' +
+            '            <li>' +
+            '                <span>ChildB</span>' +
+            '                <ul>' +
+            '                    <li><span>GrandChildA</span></li>' +
+            '                    <li><span>GrandChildB</span></li>' +
+            '                </ul>' +
+            '            </li>' +
+            '        </ul>' +
+            '    </li>' +
+            '    <li><span>Parent3</span></li>' +
+            '</ul>';
 
     beforeEach(function () {
         $("body").append(A_LIST);
@@ -34,18 +34,15 @@ describe('ShiftyList', function () {
     it('Nodes are draggable', function () {
         expect(span("ChildA").attr("draggable")).toBeTruthy();
     });
-    it('Dragged nodes are styled differently', function () {
-        shiftyList.dragStart(span("ChildA"));
 
-        expect(span("ChildA").hasClass("drag")).toBeTruthy();
-    });
     it('We can drop a child onto an ancestor', function () {
-        shiftyList.drop(span("GrandChildA"), span("Parent2"));
+        shiftyList.dropHandler(span("GrandChildA"), span("Parent2"));
 
         expect(ancestry(span("GrandChildA"))).toEqual("GrandChildA");
     });
+
     it('We cannot drop an ancestor onto a child', function () {
-        shiftyList.drop(span("Parent2"), span("GrandChildA"));
+        shiftyList.dropHandler(span("Parent2"), span("GrandChildA"));
 
         expect(ancestry(span("GrandChildA"))).toEqual("GrandChildA, ChildB, Parent2");
     });

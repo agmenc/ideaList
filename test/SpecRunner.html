@@ -18,6 +18,7 @@
     <script type="text/javascript" src="../src/javascript/Saver.js"></script>
     <script type="text/javascript" src="../src/javascript/StorageProxy.js"></script>
     <script type="text/javascript" src="../src/javascript/Idea.js"></script>
+    <script type="text/javascript" src="../src/javascript/DragAndDrop.js"></script>
     <script type="text/javascript" src="../src/javascript/ShiftyList.js"></script>
 
     <!-- include spec files here... -->
@@ -26,34 +27,24 @@
     <script type="text/javascript" src="SaverSpec.js"></script>
     <script type="text/javascript" src="StorageProxySpec.js"></script>
     <script type="text/javascript" src="IdeaSpec.js"></script>
+    <script type="text/javascript" src="DragAndDropSpec.js"></script>
     <script type="text/javascript" src="ShiftyListSpec.js"></script>
 
     <script type="text/javascript">
         (function() {
             var jasmineEnv = jasmine.getEnv();
             jasmineEnv.updateInterval = 1000;
-
             var trivialReporter = new jasmine.TrivialReporter();
-
             jasmineEnv.addReporter(trivialReporter);
-
-            jasmineEnv.specFilter = function(spec) {
-                return trivialReporter.specFilter(spec);
-            };
-
+            jasmineEnv.specFilter = function(spec) { return trivialReporter.specFilter(spec); };
             var currentWindowOnload = window.onload;
 
             window.onload = function() {
                 if (currentWindowOnload) {
                     currentWindowOnload();
                 }
-                execJasmine();
-            };
-
-            function execJasmine() {
                 jasmineEnv.execute();
-            }
-
+            };
         })();
     </script>
 
